@@ -1,0 +1,38 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:tools="http://schemas.android.com/tools"
+      tools:context=".ui.MainActivity">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/navigation_item_home"
+            android:icon="@drawable/ic_drawer_home"
+            android:title="首页"/>
+        <item
+            android:id="@+id/navigation_item_second"
+            android:checked="true"
+            android:icon="@drawable/ic_drawer_home"
+            android:title="次页1"/>
+        <item
+            android:id="@+id/navigation_item_third"
+            android:checked="true"
+            android:icon="@drawable/ic_drawer_home"
+            android:title="次页2"/>
+        <item
+            android:id="@+id/navigation_item_four"
+            android:checked="true"
+            android:icon="@drawable/ic_drawer_home"
+            android:title="次页3"/>
+        <item android:title="其他">
+            <menu>
+                <item
+                    android:id="@+id/navigation_item_switch_theme"
+                    android:icon="@drawable/ic_drawer_home"
+                    android:title="主题换肤"/>
+
+                <item
+                    android:id="@+id/navigation_item_about"
+                    android:icon="@drawable/ic_drawer_home"
+                    android:title="关于"/>
+            </menu>
+        </item>
+    </group>
+</menu>

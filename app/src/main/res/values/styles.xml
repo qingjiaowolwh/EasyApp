@@ -1,0 +1,40 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowBackground">@android:color/white</item>
+        <item name="drawerArrowStyle">@style/AppTheme.MyDrawerArrowStyle</item>
+        <item name="actionOverflowMenuStyle">@style/PopupMenu.MyMenuStyle</item>
+    </style>
+
+
+    <style name="PopupMenu.MyMenuStyle" parent="@style/Widget.AppCompat.Light.PopupMenu.Overflow">
+        <!--菜单栏在Toolbar下-->
+        <item name="overlapAnchor">false</item>
+        <!--垂直间距-->
+        <item name="android:dropDownVerticalOffset">0dip</item>
+        <!--弹出菜单背景色为标题栏的背景色-->
+        <!--  <item name="android:popupBackground">?attr/colorPrimary</item>-->
+        <!--水平偏移量-->
+        <!--  <item name="android:dropDownHorizontalOffset">0dp</item>-->
+    </style>
+    <!--自定义 navigation drarwer 的样式-->
+    <style name="AppTheme.MyDrawerArrowStyle" parent="Widget.AppCompat.DrawerArrowToggle">
+        <item name="spinBars">true</item>
+        <item name="color">#FFFFFF</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
+
+</resources>

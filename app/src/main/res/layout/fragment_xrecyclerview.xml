@@ -1,0 +1,15 @@
+<com.edu.zum.easyapp.widgets.MultiStateView
+    android:id="@+id/multiStateView"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.edu.zum.easyapp.fragment.XRecyclerViewFragment">
+
+    <com.jcodecraeer.xrecyclerview.XRecyclerView
+        android:id="@+id/xrecyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+
+</com.edu.zum.easyapp.widgets.MultiStateView>

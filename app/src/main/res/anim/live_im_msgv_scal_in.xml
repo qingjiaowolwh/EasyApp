@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android"
+    android:interpolator="@android:anim/accelerate_interpolator" >
+
+    <scale
+        android:duration="300"
+        android:fromXScale="0.2"
+        android:fromYScale="0.2"
+        android:pivotX="0%"
+        android:pivotY="100%"
+        android:toXScale="1.0"
+        android:toYScale="1.0" />
+
+</set><!--
+alpha.xml
+[html]
+<?xml version="1.0" encoding="utf-8"?> 
+<set xmlns:android="http://schemas.android.com/apk/res/android" 
+    android:interpolator="@android:anim/accelerate_interpolator" > 
+ 
+    <alpha 
+        android:duration="500" 
+        android:fromAlpha="1.0" 
+        android:startOffset="500" 
+        android:toAlpha="0.0" /> 
+ 
+</set> 
+rotate.xml
+[html]
+<?xml version="1.0" encoding="utf-8"?> 
+<set xmlns:android="http://schemas.android.com/apk/res/android" 
+    android:interpolator="@android:anim/accelerate_interpolator" > 
+ 
+    <rotate 
+        android:duration="5000" 
+        android:fromDegrees="0" 
+        android:pivotX="50%" 
+        android:pivotY="50%" 
+        android:toDegrees="360" /> 
+ 
+</set> 
+scale.xml
+[html]
+<?xml version="1.0" encoding="utf-8"?> 
+<set xmlns:android="http://schemas.android.com/apk/res/android" 
+    android:interpolator="@android:anim/accelerate_interpolator" > 
+ 
+    <scale 
+        android:duration="2000" 
+        android:fromXScale="1.0" 
+        android:fromYScale="1.0" 
+        android:pivotX="50%" 
+        android:pivotY="50%" 
+        android:toXScale="0.0" 
+        android:toYScale="0.0" /> 
+ 
+</set> 
+translate.xml
+[html]
+<?xml version="1.0" encoding="utf-8"?> 
+<set xmlns:android="http://schemas.android.com/apk/res/android" 
+    android:interpolator="@android:anim/accelerate_interpolator" > 
+ 
+    <translate 
+        android:duration="2000" 
+        android:fromXDelta="50%" 
+        android:fromYDelta="0%" 
+        android:toXDelta="100%" 
+        android:toYDelta="100%" /> 
+</set> 
+-->

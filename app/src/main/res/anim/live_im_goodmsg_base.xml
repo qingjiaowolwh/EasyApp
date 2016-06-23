@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android"
+    android:interpolator="@android:anim/accelerate_interpolator" >
+
+    <scale
+        android:duration="800"
+        android:fromXScale="1.0"
+        android:fromYScale="1.0"
+        android:pivotX="50%"
+        android:pivotY="50%"
+        android:startOffset="0"
+        android:toXScale="8.0"
+        android:toYScale="8.0" />
+
+    <!-- 垂直方向的移动 -->
+    <translate
+        android:duration="3500"
+        android:fillAfter="true"
+        android:fromYDelta="0%"
+        android:startOffset="0"
+        android:toYDelta="-72%p" />
+
+    <alpha
+        android:duration="1000"
+        android:fromAlpha="1.0"
+        android:startOffset="2500"
+        android:toAlpha="0.0" />
+
+</set>
