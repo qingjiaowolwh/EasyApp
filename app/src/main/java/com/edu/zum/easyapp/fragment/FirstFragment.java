@@ -8,6 +8,7 @@ import android.view.View;
 
 import com.edu.zum.easyapp.adapter.BaseRecyclerAdapter;
 import com.edu.zum.easyapp.adapter.FirstAdapter;
+import com.edu.zum.easyapp.api.ApiManager;
 import com.edu.zum.easyapp.api.RetrofitService;
 import com.edu.zum.easyapp.model.GanHuoBean;
 import com.edu.zum.easyapp.model.ResultModel;
@@ -62,6 +63,23 @@ public class FirstFragment extends XRecyclerViewFragment {
                 loadNext(resultModel);
             }
         });
+
+//        ApiManager.createUser("福利", mCurrentPageIndex, new ApiManager.Callback<ResultModel>() {
+//            @Override
+//            public void onError(Throwable e) {
+//                loadError(e);
+//            }
+//
+//            @Override
+//            public void onSuccess(ResultModel result) {
+//                loadNext(result);
+//                loadComplete();
+//            }
+//        });
+
+//
+
+
     }
 
     protected void loadNext(ResultModel resultModel) {

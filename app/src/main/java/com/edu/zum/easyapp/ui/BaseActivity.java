@@ -29,7 +29,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected Context mContext;
 
     private Toolbar toolbar;
-    private TextView title_left, title_middle, title_right;
+    private TextView title_middle;
     /**
      * 可以显示加载  内容  错误   空等视图的自定义View
      */
@@ -45,6 +45,8 @@ public abstract class BaseActivity extends AppCompatActivity {
      * MultiStateView浮在界面上面的加载视图
      */
     private View loading;
+
+    private boolean isBackFinish = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -119,11 +121,26 @@ public abstract class BaseActivity extends AppCompatActivity {
         if (toolbar != null) {
             setSupportActionBar(toolbar);
             getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-            title_left = (TextView) findViewById(R.id.title_left);
+            getSupportActionBar().setHomeButtonEnabled(true); //设置返回键可用
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+            setNavigationAction();
             title_middle = (TextView) findViewById(R.id.title_middle);
-            title_right = (TextView) findViewById(R.id.title_right);
         }
     }
+
+    /**
+     * 在首页可以重写,自定义左上角图标
+     */
+    protected void setNavigationAction() {
+        toolbar.setNavigationIcon(R.drawable.fanhui);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+    }
+
 
     protected void initMultiStateView() {
         loading = LayoutInflater.from(mContext).inflate(R.layout.layout_loading_view, null);
@@ -185,22 +202,6 @@ public abstract class BaseActivity extends AppCompatActivity {
         return multiStateView;
     }
 
-    public void setLeftText(String ltext) {
-        title_right.setText(ltext);
-    }
-
-    public void setLeftIcon(int resid) {
-        title_left.setBackgroundResource(resid);
-    }
-
-    public void setRightText( String rtext) {
-        title_right.setText(rtext);
-    }
-
-    public void setRightIcon(int resid) {
-        title_right.setBackgroundResource(resid);
-    }
-
     public void setTitle(String title) {
         title_middle.setText(title);
     }
@@ -225,15 +226,17 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     /**
      * 无参跳转activity
+     *
      * @param clazz
      */
-    protected void startActivityWithoutExtras(Class<?> clazz) {
+    protected void startActivity(Class<?> clazz) {
         Intent intent = new Intent(this, clazz);
         startActivity(intent);
     }
 
     /**
      * 有参跳转activity
+     *
      * @param clazz
      * @param extras
      */
@@ -241,17 +244,5 @@ public abstract class BaseActivity extends AppCompatActivity {
         Intent intent = new Intent(this, clazz);
         intent.putExtras(extras);
         startActivity(intent);
-    }
-
-    /**
-     * 返回键退出activity
-     */
-    public void setBackPressFinish() {
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
     }
 }

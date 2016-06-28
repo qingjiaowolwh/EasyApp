@@ -40,8 +40,7 @@ public class testAdapter extends BaseRecyclerAdapter<GanHuoBean> {
     @Override
     protected void onBindMyViewHolder(BaseViewHolder holder, int position) {
         MyViewHolder myHolder = (MyViewHolder) holder;
-        myHolder.text.setText(position+mDatas.get(position).getDesc());
-
+        myHolder.text.setText(position + mDatas.get(position).getDesc());
     }
 
 

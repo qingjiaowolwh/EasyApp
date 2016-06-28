@@ -64,7 +64,7 @@ public abstract class BaseFragment extends Fragment {
                     MultiStateView.VIEW_STATE_EMPTY);
             multiStateView.getView(MultiStateView.VIEW_STATE_ERROR)
                     .findViewById(R.id.retry).setOnClickListener(OnClickListener);
-            multiStateView.setViewState(MultiStateView.VIEW_STATE_LOADING);
+            multiStateView.setViewState(MultiStateView.VIEW_STATE_CONTENT);
             retry = (Button) rootView.findViewById(R.id.retry);
         }
     }

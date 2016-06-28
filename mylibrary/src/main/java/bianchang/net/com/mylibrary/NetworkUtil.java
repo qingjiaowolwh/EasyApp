@@ -7,7 +7,6 @@ import android.net.NetworkInfo;
 public class NetworkUtil {
 
     /**
-     * 是否有网络
      *
      * @param context
      * @return
@@ -23,7 +22,6 @@ public class NetworkUtil {
 
 
     /**
-     * 判断是否有网络连接
      *
      * @param context
      * @return
@@ -40,7 +38,6 @@ public class NetworkUtil {
     }
 
     /**
-     * 判断WIFI网络是否可用
      *
      * @param context
      * @return
@@ -57,7 +54,6 @@ public class NetworkUtil {
     }
 
     /**
-     * 判断MOBILE网络是否可用
      *
      * @param context
      * @return
@@ -74,7 +70,6 @@ public class NetworkUtil {
     }
 
     /**
-     * 判断网络是否可用
      *
      * @param context
      * @return

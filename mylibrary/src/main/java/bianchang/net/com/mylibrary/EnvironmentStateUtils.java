@@ -6,15 +6,11 @@ import android.os.StatFs;
 import java.io.File;
 
 /**
- * 获取系统环境信息的工具类
- * 
- * @author liu
  */
 public class EnvironmentStateUtils {
 
 	/**
-	 * 判断设备是否存在外部存储设备
-	 * 
+	 *
 	 * @return
 	 */
 	public static boolean ExternalStorageIsAvailable() {
@@ -26,8 +22,7 @@ public class EnvironmentStateUtils {
 	}
 
 	/**
-	 * 获取外部存储设备的路径
-	 * 
+	 *
 	 * @return
 	 */
 	public static File getExternalStorageDirectory() {
@@ -35,8 +30,7 @@ public class EnvironmentStateUtils {
 	}
 
 	/**
-	 * 获取外部存储设备的可用容量
-	 * 
+	 *
 	 * @return
 	 */
 	public static long getAvailableExternalMemorySize() {
@@ -52,8 +46,6 @@ public class EnvironmentStateUtils {
 	}
 
 	/**
-	 * 获取外部存储设备的总容量
-	 * 
 	 * @return
 	 */
 	public long getTotalExternalMemorySize() {

@@ -8,9 +8,6 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.edu.zum.easyapp.R;
 import com.edu.zum.easyapp.model.GanHuoBean;
-import com.edu.zum.easyapp.utils.ImageLoaderHelper;
-import com.nostra13.universalimageloader.core.ImageLoader;
-import com.squareup.picasso.Picasso;
 
 import java.util.List;
 

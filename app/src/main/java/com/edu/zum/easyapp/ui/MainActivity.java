@@ -67,14 +67,17 @@ public class MainActivity extends BaseActivity {
         return R.layout.activity_main;
     }
 
-
     private void setDrawerLayout() {
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close);
         toggle.syncState();
         drawerLayout.setDrawerListener(toggle);
         //通过 NavigationDrawer 打开关闭 抽屉
-        getSupportActionBar().setHomeButtonEnabled(true); //设置返回键可用
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+    }
+
+    @Override
+    protected void setNavigationAction() {
         getToolbar().setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -122,7 +125,8 @@ public class MainActivity extends BaseActivity {
                         break;
                     case R.id.navigation_item_four:
                         setTitle("次页3");
-                        switchFragment(FirstFragment.class);
+//                        switchFragment(FirstFragment.class);
+                        startActivity(PictureActivity.class);
                         break;
                     case R.id.navigation_item_switch_theme:
                         break;
