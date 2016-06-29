@@ -21,7 +21,7 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
 
-public abstract class XRecyclerViewFragment<T> extends BaseFragment{
+public abstract class XRecyclerViewFragment<T> extends BaseToolbarFragment{
     private String TAG="XRecyclerViewFragment";
     protected static final int ACTION_REFRESH = 1;
     protected static final int ACTION_LOAD_MORE = 2;
@@ -136,6 +136,10 @@ public abstract class XRecyclerViewFragment<T> extends BaseFragment{
 
     protected int setLoadingMoreProgressStyle() {
         return ProgressStyle.SquareSpin;
+    }
+
+    protected void stopRefresh(){
+        mRecyclerView.setRefreshing(false);
     }
 
     protected int setHeaderViewResourceID() {

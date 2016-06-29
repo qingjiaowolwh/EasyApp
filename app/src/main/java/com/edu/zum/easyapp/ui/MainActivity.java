@@ -125,8 +125,8 @@ public class MainActivity extends BaseActivity {
                         break;
                     case R.id.navigation_item_four:
                         setTitle("次页3");
-//                        switchFragment(FirstFragment.class);
-                        startActivity(PictureActivity.class);
+//                        switchFragment(FABRecyclerViewFragment.class);
+                        startActivity(ContainerActivity.class);
                         break;
                     case R.id.navigation_item_switch_theme:
                         break;

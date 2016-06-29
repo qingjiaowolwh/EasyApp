@@ -17,4 +17,5 @@
     <string name="search">搜索</string>
     <string name="scan">扫一扫</string>
     <string name="setting">设置</string>
+    <string name="title_activity_change_fragment">ChangeFragmentActivity</string>
 </resources>

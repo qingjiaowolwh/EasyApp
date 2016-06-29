@@ -15,8 +15,7 @@
         app:showAsAction="always"/>
     <item
         android:id="@+id/action_share"
-        android:icon="@drawable/icon_share"
         android:orderInCategory="200"
         android:title="分享"
-        app:showAsAction="never"/>
+        app:showAsAction="always"/>
 </menu>

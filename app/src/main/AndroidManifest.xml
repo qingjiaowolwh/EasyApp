@@ -30,7 +30,10 @@
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version"/>
 
-        <activity android:name=".ui.PictureActivity">
+        <activity
+            android:name=".ui.ContainerActivity"
+            android:label="@string/title_activity_change_fragment"
+            android:theme="@style/AppTheme">
         </activity>
     </application>
 

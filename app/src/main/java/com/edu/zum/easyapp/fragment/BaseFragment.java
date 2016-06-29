@@ -41,7 +41,7 @@ public abstract class BaseFragment extends Fragment {
         ButterKnife.bind(this, rootView);
         mContext = getActivity();
         mProgressDialog = new ProgressDialog(mContext);
-        mProgressDialog.setCanceledOnTouchOutside(false);
+//        mProgressDialog.setCanceledOnTouchOutside(false);
         setProgressDialogMessage();
         init();
         initMultiStateView();

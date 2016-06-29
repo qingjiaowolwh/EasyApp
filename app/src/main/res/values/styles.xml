@@ -9,6 +9,8 @@
         <item name="android:windowBackground">@android:color/white</item>
         <item name="drawerArrowStyle">@style/AppTheme.MyDrawerArrowStyle</item>
         <item name="actionOverflowMenuStyle">@style/PopupMenu.MyMenuStyle</item>
+        <!-- 这样toolbar上滑出去标题跟状态栏不会重叠，而是被覆盖。将style(v21)中的<item name="statusBarColor">@color/colorPrimaryDark</item>-->
+
     </style>
 
 
