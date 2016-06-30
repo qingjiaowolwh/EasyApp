@@ -16,6 +16,7 @@ import com.edu.zum.easyapp.R;
 import com.edu.zum.easyapp.fragment.AnimatonFragment;
 import com.edu.zum.easyapp.fragment.FirstFragment;
 import com.edu.zum.easyapp.fragment.SecondFragment;
+import com.edu.zum.easyapp.fragment.StickyFragment;
 import com.edu.zum.easyapp.utils.ViewUtils;
 
 import butterknife.Bind;
@@ -129,6 +130,7 @@ public class MainActivity extends BaseActivity {
                         startActivity(ContainerActivity.class);
                         break;
                     case R.id.navigation_item_switch_theme:
+                        switchFragment(StickyFragment.class);
                         break;
                     case R.id.navigation_item_about:
                         break;

@@ -55,6 +55,6 @@ public class ChildFragment extends XRecyclerViewFragment {
 
     @Override
     protected BaseRecyclerAdapter<GanHuoBean> setAdapter() {
-        return new testAdapter(mContext);
+        return new testAdapter();
     }
 }

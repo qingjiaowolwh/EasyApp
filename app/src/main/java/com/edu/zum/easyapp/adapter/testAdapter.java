@@ -2,6 +2,7 @@ package com.edu.zum.easyapp.adapter;
 
 import android.content.Context;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.edu.zum.easyapp.R;
@@ -22,8 +23,8 @@ public class testAdapter extends BaseRecyclerAdapter<GanHuoBean> {
         super(mDatas);
     }
 
-    public testAdapter(Context mContext) {
-        super(mContext);
+    public testAdapter() {
+        super();
     }
 
     @Override
@@ -32,7 +33,7 @@ public class testAdapter extends BaseRecyclerAdapter<GanHuoBean> {
     }
 
     @Override
-    protected BaseViewHolder setViewHolder(View v) {
+    protected BaseViewHolder setViewHolder(View v, int viewType, ViewGroup parent) {
         return new MyViewHolder(v);
     }
 

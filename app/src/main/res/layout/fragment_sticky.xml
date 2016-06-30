@@ -1,0 +1,16 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:tools="http://schemas.android.com/tools"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             tools:context="com.edu.zum.easyapp.fragment.StickyFragment">
+
+    <include layout="@layout/fragment_xrecyclerview"/>
+
+
+    <include
+        android:id="@+id/sticky_header"
+        layout="@layout/layout_stick_header"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        />
+</FrameLayout>

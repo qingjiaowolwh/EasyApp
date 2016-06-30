@@ -68,6 +68,6 @@ public class FABRecyclerViewFragment extends XRecyclerViewFragment{
 
     @Override
     protected BaseRecyclerAdapter setAdapter() {
-        return new FirstAdapter(mContext);
+        return new FirstAdapter();
     }
 }

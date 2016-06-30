@@ -85,6 +85,6 @@ public class FirstFragment extends XRecyclerViewFragment {
 
     @Override
     protected BaseRecyclerAdapter<GanHuoBean> setAdapter() {
-        return new FirstAdapter(mContext);
+        return new FirstAdapter();
     }
 }

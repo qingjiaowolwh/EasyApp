@@ -219,7 +219,7 @@ public abstract class BaseActivity extends AppCompatActivity {
                 if (mRun != null)
                     mHandker.post(mRun);
             } else {
-                ToastUtil.show(mContext, getResources().getString(R.string.qingjianchawangluo));
+                ToastUtil.show( getResources().getString(R.string.qingjianchawangluo));
             }
         }
     };

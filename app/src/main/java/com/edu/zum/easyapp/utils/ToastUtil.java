@@ -1,18 +1,32 @@
 /**
- * 
+ *
  */
 package com.edu.zum.easyapp.utils;
 
-import android.content.Context;
 import android.widget.Toast;
+
+import com.edu.zum.easyapp.global.MyApplication;
 
 public class ToastUtil {
 
-	public static void show(Context context, String info) {
-		Toast.makeText(context, info, Toast.LENGTH_LONG).show();
-	}
+    private static Toast toast;
 
-	public static void show(Context context, int info) {
-		Toast.makeText(context, info, Toast.LENGTH_LONG).show();
-	}
+    static {
+        toast = Toast.makeText(MyApplication.getInstance().getApplicationContext(), "", Toast.LENGTH_SHORT);
+    }
+
+    public static void show(String info) {
+        toast.setText(info);
+        showToast();
+    }
+
+    public static void show(int info) {
+        toast.setText(info);
+        showToast();
+    }
+
+
+    private static void showToast() {
+        toast.show();
+    }
 }
