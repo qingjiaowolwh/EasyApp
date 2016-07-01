@@ -48,7 +48,7 @@ public abstract class XRecyclerViewFragment<T> extends BaseToolbarFragment{
         mRecyclerView.setArrowImageView(R.drawable.iconfont_downgrey);
 
         if (setHeaderViewResourceID() > 0) {
-            View header = LayoutInflater.from(mContext).inflate(setHeaderViewResourceID(), (ViewGroup) getContentView(), false);
+            View header = LayoutInflater.from(mContext).inflate(setHeaderViewResourceID(),mRecyclerView, false);
             mRecyclerView.addHeaderView(header);
         }
         adapter = setAdapter();
@@ -110,7 +110,7 @@ public abstract class XRecyclerViewFragment<T> extends BaseToolbarFragment{
 
     protected void loadError(Throwable e){
         Log.e(TAG,e.getMessage());
-        ToastUtil.show( getResources().getString(R.string.qingjianchawangluo));
+        ToastUtil.show(getResources().getString(R.string.qingjianchawangluo));
         if (mCurrentAction == ACTION_REFRESH) {
             setStateError();
             retry(new Runnable() {

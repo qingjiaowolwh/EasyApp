@@ -1,5 +1,6 @@
 package com.edu.zum.easyapp.fragment;
 
+import android.support.annotation.StringRes;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
@@ -9,7 +10,7 @@ import com.edu.zum.easyapp.adapter.FirstAdapter;
 import com.edu.zum.easyapp.api.ApiManager;
 import com.edu.zum.easyapp.model.GanHuoBean;
 import com.edu.zum.easyapp.model.ResultModel;
-
+import com.edu.zum.easyapp.utils.ToastUtil;
 public class FirstFragment extends XRecyclerViewFragment {
 
     @Override
@@ -17,15 +18,10 @@ public class FirstFragment extends XRecyclerViewFragment {
         super.setUpData();
         //获取数据
         mRecyclerView.setRefreshing(true);
-
-        adapter.setOnItemClickListener(new BaseRecyclerAdapter.OnItemClickListener<GanHuoBean>() {
+        adapter.setOnItemChildClickListener(new BaseRecyclerAdapter.OnItemChildClickListener() {
             @Override
-            public void onItemClick(View view, int position, GanHuoBean model) {
-//                Intent i = new Intent(mContext, PictureActivity.class);
-//                Bundle b = new Bundle();
-//                b.putString("url", model.getUrl());
-//                i.putExtras(b);
-//                mContext.startActivity(i);
+            public void onItemChildClick(View view, int position, Object model) {
+
             }
         });
     }

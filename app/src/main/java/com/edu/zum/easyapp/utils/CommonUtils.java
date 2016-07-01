@@ -1,6 +1,9 @@
 package com.edu.zum.easyapp.utils;
 
 import android.content.Context;
+import android.graphics.Color;
+
+import java.security.SecureRandom;
 
 /**
  * Created by lwh on 2016/4/6.
@@ -32,5 +35,17 @@ public class CommonUtils {
             result = context.getResources().getDimensionPixelSize(resourceId);
         }
         return result;
+    }
+
+    /**
+     * 随机颜色
+     *
+     * @return
+     */
+    private int getRandomColor() {
+        SecureRandom rgen = new SecureRandom();
+        return Color.HSVToColor(150, new float[]{
+                rgen.nextInt(359), 1, 1
+        });
     }
 }

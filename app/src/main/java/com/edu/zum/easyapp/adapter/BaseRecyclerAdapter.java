@@ -5,10 +5,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-
-import com.edu.zum.easyapp.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -88,7 +84,7 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<BaseVi
 
     public interface OnItemLongClickListener<T> {
 
-        void onItemLongClick(View view, int position, T model);
+        boolean onItemLongClick(View view, int position, T model);
     }
 
     @Override
@@ -101,7 +97,7 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<BaseVi
         mContext = parent.getContext();
         mInflater = LayoutInflater.from(mContext);
         View view = LayoutInflater.from(parent.getContext()).inflate(setItemLayoutResourceID(), parent, false);
-        return setViewHolder(view,viewType,parent);
+        return setViewHolder(view, viewType, parent);
 
     }
 
@@ -109,61 +105,55 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<BaseVi
     @Override
     public void onBindViewHolder(BaseViewHolder holder, final int position) {
         onBindMyViewHolder(holder, position);
-//        holder.itemView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if (mOnItemClickListener != null)
-//                    mOnItemClickListener.onItemClick(v, position, mDatas.get(position));
-//            }
-//        });
-//        holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
-//            @Override
-//            public boolean onLongClick(View v) {
-//                if (mOnItemLongClickListener != null)
-//                    mOnItemLongClickListener.onItemLongClick(v, position, mDatas.get(position));
-//                return false;
-//            }
-//        });
+        initItemClickListener(holder, position);
     }
 
-    private int mLastPosition = -1;
-    private static final int DELAY = 138;
-
-    public void showItemAnim(final View view, final int position) {
-       final Context context = view.getContext();
-        if (position > mLastPosition) {
-            view.setAlpha(0);
-            view.postDelayed(new Runnable() {
+    private void initItemClickListener(BaseViewHolder holder, final int position) {
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mOnItemClickListener != null)
+                    mOnItemClickListener.onItemClick(v, position, mDatas.get(position));
+            }
+        });
+        if (mOnItemLongClickListener != null) {
+            holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
-                public void run() {
-                    Animation animation = AnimationUtils.loadAnimation(context,
-                            R.anim.slide_in_right);
-                    animation.setAnimationListener(new Animation.AnimationListener() {
-                        @Override
-                        public void onAnimationStart(Animation animation) {
-                            view.setAlpha(1);
-                        }
-
-
-                        @Override
-                        public void onAnimationEnd(Animation animation) {
-                        }
-
-
-                        @Override
-                        public void onAnimationRepeat(Animation animation) {
-                        }
-                    });
-                    view.startAnimation(animation);
+                public boolean onLongClick(View v) {
+                    return mOnItemLongClickListener.onItemLongClick(v, position, mDatas.get(position));
                 }
-            }, DELAY * position);
-            mLastPosition = position;
+            });
+        }
+    }
+
+    private OnItemChildClickListener mChildClickListener;
+
+    /**
+     * 给Item的childView设置监听
+     *
+     * @param childClickListener
+     */
+    public void setOnItemChildClickListener(OnItemChildClickListener childClickListener) {
+        this.mChildClickListener = childClickListener;
+    }
+
+    public interface OnItemChildClickListener<T> {
+        void onItemChildClick(View view, int position, T model);
+    }
+
+    public class OnRecyclerItemChildClickListener implements View.OnClickListener {
+        public RecyclerView.ViewHolder mViewHolder;
+
+        @Override
+        public void onClick(View v) {
+            if (mChildClickListener != null)
+                mChildClickListener.onItemChildClick(v, mViewHolder.getLayoutPosition(), mDatas.get(mViewHolder.getLayoutPosition()));
         }
     }
 
     protected abstract int setItemLayoutResourceID();
 
-    protected abstract BaseViewHolder setViewHolder(View v,int viewType,ViewGroup parent);
+    protected abstract BaseViewHolder setViewHolder(View v, int viewType, ViewGroup parent);
 
     protected abstract void onBindMyViewHolder(BaseViewHolder holder, int position);
 

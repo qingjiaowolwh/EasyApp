@@ -36,35 +36,24 @@ public class FirstAdapter extends BaseRecyclerAdapter<GanHuoBean> {
 
     @Override
     protected BaseViewHolder setViewHolder(View v, int viewType, ViewGroup parent) {
-        return new MyViewHolder(v);
+        return new BaseViewHolder(v);
     }
 
 
     @Override
     protected void onBindMyViewHolder(BaseViewHolder holder, int position) {
-        MyViewHolder myHolder = (MyViewHolder) holder;
-        myHolder.text.setText(position + mDatas.get(position).getDesc());
-        myHolder.itemView.setTag(mDatas.get(position).getUrl());
-//            ImageLoader.getInstance().displayImage(
-//                    mDatas.get(position).getUrl(), myHolder.image,
-//                    ImageLoaderHelper.getInstance(mContext).getDisplayOptions(5));
-//        Picasso.with(mContext).load(mDatas.get(position).getUrl()).into(myHolder.image);
-        Glide.with(mContext).load(mDatas.get(position).getUrl()).centerCrop().into(myHolder.image);
+//        MyViewHolder myHolder = (MyViewHolder) holder;
+//        myHolder.text.setText(position + mDatas.get(position).getDesc());
+//        myHolder.itemView.setTag(mDatas.get(position).getUrl());
+////            ImageLoader.getInstance().displayImage(
+////                    mDatas.get(position).getUrl(), myHolder.image,
+////                    ImageLoaderHelper.getInstance(mContext).getDisplayOptions(5));
+////        Picasso.with(mContext).load(mDatas.get(position).getUrl()).into(myHolder.image);
+//        Glide.with(mContext).load(mDatas.get(position).getUrl()).centerCrop().into(myHolder.image);
+        holder.setText(R.id.text, mDatas.get(position).getDesc());
+        holder.setOnClickListener(R.id.image,new OnRecyclerItemChildClickListener());
+        Glide.with(mContext).load(mDatas.get(position).getUrl()).centerCrop().into((ImageView) holder.getView(R.id.image));
 
 
     }
-
-
-    static class MyViewHolder extends BaseViewHolder {
-        @Bind(R.id.text)
-        TextView text;
-        @Bind(R.id.image)
-        ImageView image;
-
-        public MyViewHolder(View view) {
-            super(view);
-            ButterKnife.bind(this, view);
-        }
-    }
-
 }

@@ -97,7 +97,7 @@ public abstract class BaseFragment extends Fragment {
                 if (mRun != null)
                     mHandker.post(mRun);
             } else {
-                ToastUtil.show( getResources().getString(R.string.qingjianchawangluo));
+                ToastUtil.show(getResources().getString(R.string.qingjianchawangluo));
             }
         }
     };
