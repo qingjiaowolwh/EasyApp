@@ -1,5 +1,6 @@
 package com.edu.zum.easyapp.ui;
 
+import android.os.Handler;
 import android.support.annotation.StringRes;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -19,6 +20,7 @@ import com.edu.zum.easyapp.fragment.FirstFragment;
 import com.edu.zum.easyapp.fragment.SecondFragment;
 import com.edu.zum.easyapp.fragment.StickyFragment;
 import com.edu.zum.easyapp.utils.ViewUtils;
+import com.zmnedu.library.alert.SweetAlertDialog;
 
 import butterknife.Bind;
 
@@ -37,7 +39,7 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void setToolBar() {
         super.setToolBar();
-        getToolbar().setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener(){
+        getToolbar().setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
 
             @Override
             public boolean onMenuItemClick(MenuItem item) {
@@ -49,7 +51,6 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void setUpView() {
         setDrawerLayout();
-
         mCurrentFragment = ViewUtils.createFragment(FirstFragment.class);
         mFragmentManager.beginTransaction().add(R.id.frame_content, mCurrentFragment).commit();
         setTitle("首页");
@@ -126,12 +127,18 @@ public class MainActivity extends BaseActivity {
                         switchFragment(AnimatonFragment.class);
                         break;
                     case R.id.navigation_item_four:
-                        setTitle("次页3");
+                        setTitle("Toolbar效果");
 //                        switchFragment(FABRecyclerViewFragment.class);
                         startActivity(ContainerActivity.class);
                         break;
-                    case R.id.navigation_item_switch_theme:
+                    case R.id.navigation_item_sticky:
+                        setTitle("RecyclerView悬浮效果");
+//                        switchFragment(FABRecyclerViewFragment.class);
                         switchFragment(StickyFragment.class);
+                        break;
+
+                    case R.id.navigation_item_switch_theme:
+//                        switchFragment(StickyFragment.class);
                         break;
                     case R.id.navigation_item_about:
                         break;

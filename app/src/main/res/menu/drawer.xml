@@ -10,17 +10,22 @@
             android:id="@+id/navigation_item_second"
             android:checked="true"
             android:icon="@drawable/ic_drawer_home"
-            android:title="次页1"/>
+            android:title="TabLayout"/>
         <item
             android:id="@+id/navigation_item_third"
             android:checked="true"
             android:icon="@drawable/ic_drawer_home"
-            android:title="次页2"/>
+            android:title="属性动画"/>
         <item
             android:id="@+id/navigation_item_four"
             android:checked="true"
             android:icon="@drawable/ic_drawer_home"
-            android:title="次页3"/>
+            android:title="Toolbar效果"/>
+        <item
+            android:id="@+id/navigation_item_sticky"
+            android:checked="true"
+            android:icon="@drawable/ic_drawer_home"
+            android:title="RecyclerView悬浮效果"/>
         <item android:title="其他">
             <menu>
                 <item

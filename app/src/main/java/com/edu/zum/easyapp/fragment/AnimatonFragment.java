@@ -122,21 +122,6 @@ public class AnimatonFragment extends BaseFragment {
         animSet2.start();
     }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // TODO: inflate a fragment view
-        View rootView = super.onCreateView(inflater, container, savedInstanceState);
-        ButterKnife.bind(this, rootView);
-        return rootView;
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        ButterKnife.unbind(this);
-    }
-
-
     @OnClick({R.id.bottom1, R.id.bottom2, R.id.bottom3, R.id.start})
     public void onClick(View view) {
         switch (view.getId()) {

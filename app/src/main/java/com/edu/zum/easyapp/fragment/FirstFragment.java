@@ -1,6 +1,5 @@
 package com.edu.zum.easyapp.fragment;
 
-import android.support.annotation.StringRes;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
@@ -8,9 +7,14 @@ import android.view.View;
 import com.edu.zum.easyapp.adapter.BaseRecyclerAdapter;
 import com.edu.zum.easyapp.adapter.FirstAdapter;
 import com.edu.zum.easyapp.api.ApiManager;
+import com.edu.zum.easyapp.api.RetrofitService;
 import com.edu.zum.easyapp.model.GanHuoBean;
 import com.edu.zum.easyapp.model.ResultModel;
-import com.edu.zum.easyapp.utils.ToastUtil;
+
+import rx.Subscriber;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
+
 public class FirstFragment extends XRecyclerViewFragment {
 
     @Override
@@ -34,36 +38,37 @@ public class FirstFragment extends XRecyclerViewFragment {
     @Override
     protected void loadData() {
         super.loadData();
-//        RetrofitService.getInstance().getGoods("福利", mCurrentPageIndex).subscribeOn(Schedulers.io())
-//                .observeOn(AndroidSchedulers.mainThread()).subscribe(new Subscriber<ResultModel>() {
-//            @Override
-//            public void onCompleted() {
-//                loadComplete();
-//            }
-//
-//            @Override
-//            public void onError(Throwable e) {
-//                loadError(e);
-//            }
-//
-//            @Override
-//            public void onNext(ResultModel resultModel) {
-//                loadNext(resultModel);
-//            }
-//        });
+        RetrofitService.getInstance().getGoods("福利", mCurrentPageIndex).subscribeOn(Schedulers.io())
+                .unsubscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread()).subscribe(new Subscriber<ResultModel>() {
+            @Override
+            public void onCompleted() {
+                loadComplete();
+            }
 
-        ApiManager.createUser("福利", mCurrentPageIndex, new ApiManager.Callback<ResultModel>() {
             @Override
             public void onError(Throwable e) {
                 loadError(e);
             }
 
             @Override
-            public void onSuccess(ResultModel result) {
-                loadNext(result);
-                loadComplete();
+            public void onNext(ResultModel resultModel) {
+                loadNext(resultModel);
             }
         });
+
+//        ApiManager.createUser("福利", mCurrentPageIndex, new ApiManager.Callback<ResultModel>() {
+//            @Override
+//            public void onError(Throwable e) {
+//                loadError(e);
+//            }
+//
+//            @Override
+//            public void onSuccess(ResultModel result) {
+//                loadNext(result);
+//                loadComplete();
+//            }
+//        });
 
     }
 

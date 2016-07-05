@@ -19,8 +19,8 @@ public class ApiManager {
 
     public static <T> void execute(Observable<T> observable, final Callback<T> callback) {
         observable.subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
                 .unsubscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Subscriber<T>() {
             @Override
             public void onCompleted() {
