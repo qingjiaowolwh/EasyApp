@@ -5,20 +5,13 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 
 import com.edu.zum.easyapp.R;
 import com.edu.zum.easyapp.adapter.BaseRecyclerAdapter;
-import com.edu.zum.easyapp.api.RetrofitService;
-import com.edu.zum.easyapp.model.ResultModel;
 import com.edu.zum.easyapp.utils.NetworkUtil;
 import com.edu.zum.easyapp.utils.ToastUtil;
-import com.jcodecraeer.xrecyclerview.ProgressStyle;
-import com.jcodecraeer.xrecyclerview.XRecyclerView;
-
-import rx.Subscriber;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
+import com.zmnedu.library.xrecyclerview.ProgressStyle;
+import com.zmnedu.library.xrecyclerview.XRecyclerView;
 
 
 public abstract class XRecyclerViewFragment<T> extends BaseToolbarFragment{

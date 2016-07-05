@@ -14,7 +14,7 @@ import android.widget.Button;
 import com.edu.zum.easyapp.R;
 import com.edu.zum.easyapp.utils.NetworkUtil;
 import com.edu.zum.easyapp.utils.ToastUtil;
-import com.edu.zum.easyapp.widgets.MultiStateView;
+import com.zmnedu.library.widgets.MultiStateView;
 
 import butterknife.ButterKnife;
 
@@ -49,7 +49,6 @@ public abstract class BaseFragment extends Fragment {
         setUpData();
         return rootView;
     }
-
 
     protected void initMultiStateView() {
         loading = LayoutInflater.from(mContext).inflate(R.layout.layout_loading_view, null);

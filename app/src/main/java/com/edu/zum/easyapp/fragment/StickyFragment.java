@@ -56,6 +56,7 @@ public class StickyFragment extends XRecyclerViewFragment implements View.OnClic
 
         stickyHeader = (LinearLayout) getContentView().findViewById(R.id.sticky_header);
         mRecyclerView.setOnScrollListener(new RecyclerView.OnScrollListener() {
+            private boolean flag = true;
 
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
@@ -95,13 +96,13 @@ public class StickyFragment extends XRecyclerViewFragment implements View.OnClic
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.position1:
-                ToastUtil.show( "--rel----position1------");
+                ToastUtil.show("--rel----position1------");
                 break;
             case R.id.position2:
                 ToastUtil.show("--rel----position2------");
                 break;
             case R.id.position3:
-                ToastUtil.show( "--rel----position3------");
+                ToastUtil.show("--rel----position3------");
                 break;
         }
     }

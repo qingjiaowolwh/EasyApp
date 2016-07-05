@@ -1,4 +1,4 @@
-<com.edu.zum.easyapp.widgets.MultiStateView
+<com.zmnedu.library.widgets.MultiStateView
     android:id="@+id/multiStateView"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -7,10 +7,10 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     >
 
-    <com.jcodecraeer.xrecyclerview.XRecyclerView
+    <com.zmnedu.library.xrecyclerview.XRecyclerView
         android:id="@+id/xrecyclerview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         />
 
-</com.edu.zum.easyapp.widgets.MultiStateView>
+</com.zmnedu.library.widgets.MultiStateView>

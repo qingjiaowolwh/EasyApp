@@ -1,6 +1,8 @@
 package com.edu.zum.easyapp.global;
 
 import android.app.Application;
+
+import com.squareup.leakcanary.LeakCanary;
 //import android.provider.Settings;
 //
 //import com.edu.zum.easyapp.utils.ImageLoaderHelper;
@@ -17,6 +19,7 @@ public class MyApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        LeakCanary.install(this);
         mInstance = this;
 //        ImageLoader.getInstance().init(
 //                ImageLoaderHelper.getInstance(this)

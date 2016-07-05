@@ -1,19 +1,14 @@
 package com.edu.zum.easyapp.adapter;
 
-import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.edu.zum.easyapp.R;
 import com.edu.zum.easyapp.model.GanHuoBean;
 
 import java.util.List;
-
-import butterknife.Bind;
-import butterknife.ButterKnife;
 
 
 /**

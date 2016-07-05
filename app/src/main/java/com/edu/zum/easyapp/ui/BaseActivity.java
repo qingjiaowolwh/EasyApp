@@ -13,14 +13,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-
 import com.edu.zum.easyapp.R;
 import com.edu.zum.easyapp.rxbus.RxBus;
 import com.edu.zum.easyapp.rxbus.RxBusEvent;
 import com.edu.zum.easyapp.utils.NetworkUtil;
 import com.edu.zum.easyapp.utils.StatusBarUtil;
 import com.edu.zum.easyapp.utils.ToastUtil;
-import com.edu.zum.easyapp.widgets.MultiStateView;
+import com.zmnedu.library.widgets.MultiStateView;
 
 import butterknife.ButterKnife;
 import rx.functions.Action1;

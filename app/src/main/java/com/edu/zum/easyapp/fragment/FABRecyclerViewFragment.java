@@ -39,18 +39,18 @@ public class FABRecyclerViewFragment extends XRecyclerViewFragment{
     @Override
     protected void loadData() {
         super.loadData();
-//        ApiManager.createUser("福利", mCurrentPageIndex, new ApiManager.Callback<ResultModel>() {
-//            @Override
-//            public void onError(Throwable e) {
-//                loadError(e);
-//            }
-//
-//            @Override
-//            public void onSuccess(ResultModel result) {
-//                loadNext(result);
-//                loadComplete();
-//            }
-//        });
+        ApiManager.createUser("福利", mCurrentPageIndex, new ApiManager.Callback<ResultModel>() {
+            @Override
+            public void onError(Throwable e) {
+                loadError(e);
+            }
+
+            @Override
+            public void onSuccess(ResultModel result) {
+                loadNext(result);
+                loadComplete();
+            }
+        });
 
     }
 
