@@ -5,8 +5,21 @@
     <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"
+        android:icon="@drawable/ic_search"
         android:title="@string/action_settings"
-        app:showAsAction="never"/>
+        app:showAsAction="never">
+        <menu>
+            <item
+                android:id="@+id/navigation_item_switch_theme"
+                android:icon="@drawable/ic_drawer_home"
+                android:title="主题换肤"/>
+
+            <item
+                android:id="@+id/navigation_item_about"
+                android:icon="@drawable/ic_drawer_home"
+                android:title="关于"/>
+        </menu>
+    </item>
     <item
         android:id="@+id/action_search"
         android:icon="@drawable/ic_search"

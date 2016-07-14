@@ -15,7 +15,6 @@
         android:layout_width="53dp"
         android:layout_height="53dp"
         android:layout_marginTop="5dp"
-        android:contentDescription="@string/app_name"
         android:visibility="gone"
         android:scaleType="fitCenter" />
 
@@ -34,7 +33,6 @@
             android:id="@+id/error_x"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:contentDescription="@string/app_name"
             android:src="@drawable/error_center_x"
             android:scaleType="center" />
 
@@ -95,7 +93,6 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:contentDescription="@string/app_name"
             android:src="@drawable/warning_sigh"
             android:scaleType="center" />
     </FrameLayout>

@@ -26,18 +26,6 @@ public class CommonUtils {
     }
 
     /**
-     * 状态栏高度的方法
-     */
-    private int getStatusBarHeight(Context context) {
-        int result = 0;
-        int resourceId = context.getResources().getIdentifier("status_bar_height", "dimen", "android");
-        if (resourceId > 0) {
-            result = context.getResources().getDimensionPixelSize(resourceId);
-        }
-        return result;
-    }
-
-    /**
      * 随机颜色
      *
      * @return

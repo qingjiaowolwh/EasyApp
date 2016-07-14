@@ -10,5 +10,4 @@
     tools:context=".ui.MainActivity"
     tools:showIn="@layout/activity_main">
 
-
 </FrameLayout>

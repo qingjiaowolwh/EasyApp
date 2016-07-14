@@ -4,11 +4,7 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.view.View;
-import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.AccelerateInterpolator;
-import android.view.animation.BounceInterpolator;
-import android.view.animation.CycleInterpolator;
-import android.view.animation.DecelerateInterpolator;
 
 /**
  * Created by lwh on 2016/6/22.
@@ -44,18 +40,18 @@ public class AnimUtil {
     public static AnimatorSet startTranslationBottom(Context mContext, View bottom1, View bottom2, View bottom3) {
         bottom1.setY(ScreenUtils.getScreenHeight(mContext));
         float currentY1 = bottom1.getTranslationY();
-        ObjectAnimator translationY1 = ObjectAnimator.ofFloat(bottom1, "translationY", currentY1, 360f);
+        ObjectAnimator translationY1 = ObjectAnimator.ofFloat(bottom1, "translationY", currentY1, 300f);
         translationY1.setDuration(500);
         translationY1.setInterpolator(new AccelerateInterpolator());
 
         bottom2.setY(ScreenUtils.getScreenHeight(mContext));
         float currentY2 = bottom2.getTranslationY();
-        ObjectAnimator translationY2 = ObjectAnimator.ofFloat(bottom2, "translationY", currentY2, 720f);
+        ObjectAnimator translationY2 = ObjectAnimator.ofFloat(bottom2, "translationY", currentY2, 600f);
         translationY2.setDuration(500);
 
         bottom3.setY(ScreenUtils.getScreenHeight(mContext));
         float currentY3 = bottom3.getTranslationY();
-        ObjectAnimator translationY3 = ObjectAnimator.ofFloat(bottom3, "translationY", currentY3, 0f);
+        ObjectAnimator translationY3 = ObjectAnimator.ofFloat(bottom3, "translationY", currentY3, 900f);
         translationY3.setDuration(500);
 
         AnimatorSet animSet = new AnimatorSet();

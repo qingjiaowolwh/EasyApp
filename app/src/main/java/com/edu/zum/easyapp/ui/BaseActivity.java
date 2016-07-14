@@ -19,6 +19,7 @@ import com.edu.zum.easyapp.rxbus.RxBusEvent;
 import com.edu.zum.easyapp.utils.NetworkUtil;
 import com.edu.zum.easyapp.utils.StatusBarUtil;
 import com.edu.zum.easyapp.utils.ToastUtil;
+import com.umeng.analytics.MobclickAgent;
 import com.zmnedu.library.widgets.MultiStateView;
 
 import butterknife.ButterKnife;
@@ -52,6 +53,9 @@ public abstract class BaseActivity extends AppCompatActivity {
         StatusBarUtil.initSystemBar(this);
         super.onCreate(savedInstanceState);
         setContentView(setLayoutResourceID());
+//        getWindow().
+//                getDecorView().
+//                setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
         ButterKnife.bind(this);
         init();
         initToolBar();
@@ -243,5 +247,15 @@ public abstract class BaseActivity extends AppCompatActivity {
         Intent intent = new Intent(this, clazz);
         intent.putExtras(extras);
         startActivity(intent);
+    }
+    @Override
+    public void onResume() {
+        super.onResume();
+        MobclickAgent.onResume(this);
+    }
+    @Override
+    public void onPause() {
+        super.onPause();
+        MobclickAgent.onPause(this);
     }
 }

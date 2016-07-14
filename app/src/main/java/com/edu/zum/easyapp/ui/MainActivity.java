@@ -1,7 +1,6 @@
 package com.edu.zum.easyapp.ui;
 
 import android.os.Handler;
-import android.support.annotation.StringRes;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -17,10 +16,10 @@ import android.view.View;
 import com.edu.zum.easyapp.R;
 import com.edu.zum.easyapp.fragment.AnimatonFragment;
 import com.edu.zum.easyapp.fragment.FirstFragment;
+import com.edu.zum.easyapp.fragment.ScreenshotFragment;
 import com.edu.zum.easyapp.fragment.SecondFragment;
 import com.edu.zum.easyapp.fragment.StickyFragment;
 import com.edu.zum.easyapp.utils.ViewUtils;
-import com.zmnedu.library.alert.SweetAlertDialog;
 
 import butterknife.Bind;
 
@@ -57,6 +56,11 @@ public class MainActivity extends BaseActivity {
         mPreMenuItem = mNavigationView.getMenu().getItem(0);
         mPreMenuItem.setChecked(true);
         setNavigationViewItemClickListener();
+        new Handler().post(new Runnable() {
+            @Override
+            public void run() {
+            }
+        });
     }
 
     @Override
@@ -76,6 +80,7 @@ public class MainActivity extends BaseActivity {
         drawerLayout.setDrawerListener(toggle);
         //通过 NavigationDrawer 打开关闭 抽屉
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
 
     }
 
@@ -139,6 +144,8 @@ public class MainActivity extends BaseActivity {
 
                     case R.id.navigation_item_switch_theme:
 //                        switchFragment(StickyFragment.class);
+                        setTitle("截图");
+                        switchFragment(ScreenshotFragment.class);
                         break;
                     case R.id.navigation_item_about:
                         break;
@@ -159,4 +166,20 @@ public class MainActivity extends BaseActivity {
         return true;
     }
 
+//    @Override
+//    public boolean onMenuItemClick(MenuItem item) {
+//        switch (item.getItemId()){
+//            case R.id.action_settings:
+//                ToastUtil.show("action_settings");
+//                return true;
+//        }
+//        return false;
+//    }
+
+
+    @Override
+    public boolean onMenuOpened(int featureId, Menu menu) {
+//        menu.getItem(0).setChecked(true);
+        return super.onMenuOpened(featureId, menu);
+    }
 }
