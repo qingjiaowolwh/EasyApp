@@ -17,6 +17,11 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    sourceSets{
+        main{
+            java.srcDirs=['src/main/java','src/main/java-gen']
+        }
+    }
 }
 
 dependencies {
@@ -34,7 +39,7 @@ dependencies {
     compile 'com.android.support:support-v4:23.4.0'
     /*友盟统计*/
     compile 'com.umeng.analytics:analytics:latest.integration'
-    compile 'org.greenrobot:greendao:3.0.1'
+    compile 'org.greenrobot:greendao:3.0.0'
 }
 
 
