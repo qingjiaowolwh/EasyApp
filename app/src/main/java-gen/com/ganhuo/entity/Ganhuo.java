@@ -16,6 +16,7 @@ public class Ganhuo {
     private String publishedAt;
     private String source;
     private String type;
+    private String url;
     private Boolean used;
     private String who;
 
@@ -28,13 +29,14 @@ public class Ganhuo {
     }
 
     @Generated
-    public Ganhuo(Long id, String createdAt, String desc, String publishedAt, String source, String type, Boolean used, String who) {
+    public Ganhuo(Long id, String createdAt, String desc, String publishedAt, String source, String type, String url, Boolean used, String who) {
         this.id = id;
         this.createdAt = createdAt;
         this.desc = desc;
         this.publishedAt = publishedAt;
         this.source = source;
         this.type = type;
+        this.url = url;
         this.used = used;
         this.who = who;
     }
@@ -85,6 +87,14 @@ public class Ganhuo {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     public Boolean getUsed() {

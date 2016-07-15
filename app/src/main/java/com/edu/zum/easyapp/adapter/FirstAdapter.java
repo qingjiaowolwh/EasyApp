@@ -6,7 +6,7 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.edu.zum.easyapp.R;
-import com.edu.zum.easyapp.model.GanHuoBean;
+import com.ganhuo.entity.Ganhuo;
 
 import java.util.List;
 
@@ -14,9 +14,9 @@ import java.util.List;
 /**
  * Created by lwh on 2016/3/31.
  */
-public class FirstAdapter extends BaseRecyclerAdapter<GanHuoBean> {
+public class FirstAdapter extends BaseRecyclerAdapter<Ganhuo> {
 
-    public FirstAdapter(List<GanHuoBean> mDatas) {
+    public FirstAdapter(List<Ganhuo> mDatas) {
         super(mDatas);
     }
 
@@ -46,7 +46,7 @@ public class FirstAdapter extends BaseRecyclerAdapter<GanHuoBean> {
 ////        Picasso.with(mContext).load(mDatas.get(position).getUrl()).into(myHolder.image);
 //        Glide.with(mContext).load(mDatas.get(position).getUrl()).centerCrop().into(myHolder.image);
         holder.setText(R.id.text, mDatas.get(position).getDesc());
-        holder.setOnClickListener(R.id.image,new OnRecyclerItemChildClickListener());
+        holder.setOnClickListener(R.id.image, new OnRecyclerItemChildClickListener());
         Glide.with(mContext).load(mDatas.get(position).getUrl()).centerCrop().into((ImageView) holder.getView(R.id.image));
 
 

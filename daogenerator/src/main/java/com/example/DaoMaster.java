@@ -20,12 +20,13 @@ public class DaoMaster {
 
     private static void addGanhuo(Schema schema) {
         Entity entity = schema.addEntity("Ganhuo");
-        entity.addIdProperty();//主键 int类型
+        entity.addIdProperty();//主键 Long类型
         entity.addStringProperty("createdAt");
         entity.addStringProperty("desc");
         entity.addStringProperty("publishedAt");
         entity.addStringProperty("source");
         entity.addStringProperty("type");
+        entity.addStringProperty("url");
         entity.addBooleanProperty("used");
         entity.addStringProperty("who");
     }

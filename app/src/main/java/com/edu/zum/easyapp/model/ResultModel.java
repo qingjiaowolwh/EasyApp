@@ -1,5 +1,7 @@
 package com.edu.zum.easyapp.model;
 
+import com.ganhuo.entity.Ganhuo;
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -9,7 +11,7 @@ import java.util.List;
 public class ResultModel implements Serializable {
 
     boolean error;
-    List<GanHuoBean> results;
+    List<Ganhuo> results;
 
     public boolean isError() {
         return error;
@@ -19,11 +21,11 @@ public class ResultModel implements Serializable {
         this.error = error;
     }
 
-    public List<GanHuoBean> getResults() {
+    public List<Ganhuo> getResults() {
         return results;
     }
 
-    public void setResults(List<GanHuoBean> results) {
+    public void setResults(List<Ganhuo> results) {
         this.results = results;
     }
 

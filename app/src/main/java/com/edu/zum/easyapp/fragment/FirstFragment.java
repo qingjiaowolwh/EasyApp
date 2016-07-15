@@ -6,21 +6,27 @@ import android.view.View;
 
 import com.edu.zum.easyapp.adapter.BaseRecyclerAdapter;
 import com.edu.zum.easyapp.adapter.FirstAdapter;
-import com.edu.zum.easyapp.api.ApiManager;
 import com.edu.zum.easyapp.api.RetrofitService;
-import com.edu.zum.easyapp.model.GanHuoBean;
+import com.edu.zum.easyapp.manager.DaoUtils;
 import com.edu.zum.easyapp.model.ResultModel;
+import com.ganhuo.entity.Ganhuo;
 
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
 public class FirstFragment extends XRecyclerViewFragment {
+    private DaoUtils daoUtils;
 
     @Override
     protected void setUpData() {
         super.setUpData();
         //获取数据
+        daoUtils = new DaoUtils(mContext);
+//        if (!daoUtils.searchGanhuo().isEmpty()) {
+//            adapter.append(daoUtils.searchGanhuo());
+//
+//        }
         mRecyclerView.setRefreshing(true);
         adapter.setOnItemChildClickListener(new BaseRecyclerAdapter.OnItemChildClickListener() {
             @Override
@@ -57,19 +63,6 @@ public class FirstFragment extends XRecyclerViewFragment {
             }
         });
 
-//        ApiManager.createUser("福利", mCurrentPageIndex, new ApiManager.Callback<ResultModel>() {
-//            @Override
-//            public void onError(Throwable e) {
-//                loadError(e);
-//            }
-//
-//            @Override
-//            public void onSuccess(ResultModel result) {
-//                loadNext(result);
-//                loadComplete();
-//            }
-//        });
-
     }
 
     protected void loadNext(ResultModel resultModel) {
@@ -78,6 +71,7 @@ public class FirstFragment extends XRecyclerViewFragment {
             if (!resultModel.getResults().isEmpty()) {
                 if (mCurrentAction == ACTION_REFRESH)
                     adapter.replace(resultModel.getResults());
+//                daoUtils.insertGanhuo(resultModel.getResults());
                 if (mCurrentAction == ACTION_LOAD_MORE)
                     adapter.append(resultModel.getResults());
             }
@@ -85,7 +79,7 @@ public class FirstFragment extends XRecyclerViewFragment {
     }
 
     @Override
-    protected BaseRecyclerAdapter<GanHuoBean> setAdapter() {
+    protected BaseRecyclerAdapter<Ganhuo> setAdapter() {
         return new FirstAdapter();
     }
 }
