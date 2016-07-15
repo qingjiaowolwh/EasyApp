@@ -40,6 +40,14 @@ public class AnimatorUtil {
         return ObjectAnimator.ofFloat(v, "translationX", 0.0f, x);
     }
 
+    public static ObjectAnimator translationBottom(View v, float y) {
+        return ObjectAnimator.ofFloat(v, "translationY", 0.0f, y);
+    }
+
+    public static ObjectAnimator translationTop(View v, float y) {
+        return ObjectAnimator.ofFloat(v, "translationY", y, 0.0f);
+    }
+
     public static ObjectAnimator alfaDisappear(View v) {
         return ObjectAnimator.ofFloat(v, "alpha", 1, 0);
     }
@@ -61,6 +69,20 @@ public class AnimatorUtil {
         animSet.play(scaleX(tv, s)).with(scaleY(tv, s));
         animSet.play(alfaDisappear(tv)).with(scaleX(tv, s));
         animSet.setDuration(500);
+        return animSet;
+    }
+
+    //送礼物
+    public static AnimatorSet sendGift(View anim_ll, View anim_img, View anim_count, int count) {
+        AnimatorSet animSet = new AnimatorSet();
+        animSet.play(translationLeft(anim_ll, -anim_ll.getWidth())).before(translationLeft(anim_img, -anim_ll.getWidth()));
+        animSet.play(alfaAppear(anim_img)).with(translationLeft(anim_img, -anim_ll.getWidth()));
+        animSet.play(translationLeft(anim_count, -anim_ll.getWidth())).after(alfaAppear(anim_img));
+        animSet.play(alfaAppear(anim_count)).with(translationLeft(anim_count, -anim_ll.getWidth()));
+        animSet.play(scaleX(anim_count, 3)).after(alfaAppear(anim_count));
+        animSet.play(scaleX(anim_count, 3)).with(scaleY(anim_count, 3));
+        animSet.play(translationTop(anim_ll, -anim_ll.getHeight() * 3)).after(scaleX(anim_count, 3));
+        animSet.play(alfaDisappear(anim_ll)).with(translationTop(anim_ll, -anim_ll.getHeight() * 3));
         return animSet;
     }
 

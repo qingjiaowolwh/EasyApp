@@ -4,12 +4,10 @@
 
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <!--统计权限-->
+    <!-- 统计权限 -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
-    <!--
-        <uses-permission android:name="android.permission.INTERNET"/>
-    -->
+    <!--         <uses-permission android:name="android.permission.INTERNET"/> -->
     <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
 
     <application
@@ -29,19 +27,28 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-
         <activity
             android:name=".ui.ContainerActivity"
             android:label="@string/title_activity_change_fragment"
             android:theme="@style/AppTheme">
         </activity>
-        <!--统计-->
+        <!-- 统计 -->
         <meta-data
             android:name="UMENG_APPKEY"
             android:value="5786eb0167e58e8e36004826"/>
         <meta-data
             android:name="UMENG_CHANNEL"
             android:value="wandoujia"/>
+
+        <receiver android:name=".widgets.NewAppWidget">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/new_app_widget_info"/>
+        </receiver>
     </application>
 
 </manifest>

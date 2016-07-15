@@ -7,14 +7,11 @@ import android.os.Message;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.edu.zum.easyapp.R;
-import com.edu.zum.easyapp.Thread.MyThread;
 import com.edu.zum.easyapp.base.AnimatorUtil;
-
-import java.util.Timer;
-import java.util.TimerTask;
 
 import butterknife.Bind;
 import butterknife.OnClick;
@@ -47,6 +44,14 @@ public class AnimatonFragment extends BaseFragment {
 
     @Bind(R.id.ptr_loading1)
     ImageView prLoading1;
+    @Bind(R.id.anim_gift_img)
+    //送礼物
+            ImageView animGiftImg;
+    @Bind(R.id.anim_gift_count)
+    TextView animGiftCount;
+    @Bind(R.id.anim_gift_ll)
+    LinearLayout animGiftLl;
+
 
     @Override
     protected int setLayoutResourceID() {
@@ -72,24 +77,29 @@ public class AnimatonFragment extends BaseFragment {
                 break;
             case R.id.start:
                 animationDrawable.start();
-                AnimatorUtil.translationPK(animPkLeft, mContext.getResources().getDimension(R.dimen.margin_200dp), animPkRight, mContext.getResources().getDimension(R.dimen.margin_right)).start();
-                mythread = new Thread(new MyThread());
-                mythread.start();
-                new Timer().schedule(new TimerTask() {
-                    int times = 3;
-
-                    public void run() {
-                        System.out.println("time:" + times);
-                        if (times > 0) {
-                            mHandler.sendEmptyMessage(times);
-                            times--;
-                        } else {
-                            cancel();
-                        }
-                    }
-                }, 500, 800);
+                sendGift();
+//                AnimatorUtil.translationPK(animPkLeft, mContext.getResources().getDimension(R.dimen.margin_200dp), animPkRight, mContext.getResources().getDimension(R.dimen.margin_right)).start();
+//                mythread = new Thread(new MyThread());
+//                mythread.start();
+//                new Timer().schedule(new TimerTask() {
+//                    int times = 3;
+//
+//                    public void run() {
+//                        System.out.println("time:" + times);
+//                        if (times > 0) {
+//                            mHandler.sendEmptyMessage(times);
+//                            times--;
+//                        } else {
+//                            cancel();
+//                        }
+//                    }
+//                }, 500, 800);
                 break;
         }
+    }
+
+    private void sendGift() {
+        AnimatorUtil.sendGift(animGiftLl, animGiftImg, animGiftCount, 4).start();
     }
 
     Handler mHandler = new Handler() {
@@ -105,7 +115,6 @@ public class AnimatonFragment extends BaseFragment {
             mythread.interrupt();
         }
     };
-
 
 //    public void startMyAnim() {
 //        Animation anim = AnimationUtils.loadAnimation(mContext, R.anim.in_translate_top);

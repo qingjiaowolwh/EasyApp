@@ -7,8 +7,9 @@
 
     <include layout="@layout/layout_anim_countdown"/>
 
-
     <include layout="@layout/layout_anim_bottom"/>
+
+    <include layout="@layout/layout_anim_gift"/>
 
     <LinearLayout
         android:layout_width="match_parent"
