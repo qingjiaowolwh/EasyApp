@@ -103,7 +103,8 @@ public abstract class XRecyclerViewFragment<T> extends BaseToolbarFragment{
 
     protected void loadError(Throwable e){
         Log.e(TAG,e.getMessage());
-        ToastUtil.show(getResources().getString(R.string.qingjianchawangluo));
+//        ToastUtil.show(getResources().getString(R.string.qingjianchawangluo));
+        Log.i(TAG,"请检查网络");
         if (mCurrentAction == ACTION_REFRESH) {
             setStateError();
             retry(new Runnable() {

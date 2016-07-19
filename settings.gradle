@@ -1,1 +1,1 @@
-include ':app', ':jcvideoplayer-lib', ':library', ':easeui', ':daogenerator'
+include ':app', ':jcvideoplayer-lib', ':library', ':easeui', ':daogenerator', ':PushSDK'

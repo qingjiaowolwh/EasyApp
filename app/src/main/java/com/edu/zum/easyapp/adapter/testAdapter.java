@@ -1,12 +1,11 @@
 package com.edu.zum.easyapp.adapter;
 
-import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.edu.zum.easyapp.R;
-import com.edu.zum.easyapp.model.GanHuoBean;
+import com.ganhuo.entity.Ganhuo;
 
 import java.util.List;
 
@@ -17,9 +16,9 @@ import butterknife.ButterKnife;
 /**
  * Created by lwh on 2016/3/31.
  */
-public class testAdapter extends BaseRecyclerAdapter<GanHuoBean> {
+public class testAdapter extends BaseRecyclerAdapter<Ganhuo> {
 
-    public testAdapter(List<GanHuoBean> mDatas) {
+    public testAdapter(List<Ganhuo> mDatas) {
         super(mDatas);
     }
 

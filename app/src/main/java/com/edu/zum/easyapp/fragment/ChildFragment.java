@@ -3,8 +3,8 @@ package com.edu.zum.easyapp.fragment;
 import com.edu.zum.easyapp.adapter.BaseRecyclerAdapter;
 import com.edu.zum.easyapp.adapter.testAdapter;
 import com.edu.zum.easyapp.api.RetrofitService;
-import com.edu.zum.easyapp.model.GanHuoBean;
 import com.edu.zum.easyapp.model.ResultModel;
+import com.ganhuo.entity.Ganhuo;
 
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
@@ -41,7 +41,7 @@ public class ChildFragment extends XRecyclerViewFragment {
         });
     }
 
-    protected void loadNext(ResultModel resultModel){
+    protected void loadNext(ResultModel resultModel) {
         setStateContent();
         if (!resultModel.isError()) {
             if (!resultModel.getResults().isEmpty()) {
@@ -54,7 +54,7 @@ public class ChildFragment extends XRecyclerViewFragment {
     }
 
     @Override
-    protected BaseRecyclerAdapter<GanHuoBean> setAdapter() {
+    protected BaseRecyclerAdapter<Ganhuo> setAdapter() {
         return new testAdapter();
     }
 }

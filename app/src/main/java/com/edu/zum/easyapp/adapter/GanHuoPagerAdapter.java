@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import android.util.Log;
 
 import com.edu.zum.easyapp.fragment.ChildFragment;
+import com.edu.zum.easyapp.fragment.StickyFragment;
 import com.edu.zum.easyapp.utils.ViewUtils;
 
 
@@ -23,7 +24,15 @@ public class GanHuoPagerAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        Fragment fragment = ViewUtils.createFragment(ChildFragment.class, false);
+        Fragment fragment = null;
+
+        if (position == 0) {
+            fragment = ViewUtils.createFragment(StickyFragment.class, false);
+
+        } else {
+
+            fragment = ViewUtils.createFragment(ChildFragment.class, false);
+        }
         Bundle bundle = new Bundle();
         bundle.putString("type", mTitles[position]);
         fragment.setArguments(bundle);
@@ -44,6 +53,6 @@ public class GanHuoPagerAdapter extends FragmentStatePagerAdapter {
     public void restoreState(Parcelable state, ClassLoader loader) {
 //         super.restoreState(state, loader);
         //重写这个方法是为了防止在restoreState的时候导致应用崩溃，这样做虽然不太好，但是目前我也只能想到这种方法了
-        Log.i(TAG,"restoreState");
+        Log.i(TAG, "restoreState");
     }
 }

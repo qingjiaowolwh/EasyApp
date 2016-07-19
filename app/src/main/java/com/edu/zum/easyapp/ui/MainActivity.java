@@ -16,10 +16,12 @@ import android.view.View;
 import com.edu.zum.easyapp.R;
 import com.edu.zum.easyapp.fragment.AnimatonFragment;
 import com.edu.zum.easyapp.fragment.FirstFragment;
-import com.edu.zum.easyapp.fragment.ScreenshotFragment;
+import com.edu.zum.easyapp.fragment.PrintAndroidCircleProgressbarFragment;
 import com.edu.zum.easyapp.fragment.SecondFragment;
 import com.edu.zum.easyapp.fragment.StickyFragment;
 import com.edu.zum.easyapp.utils.ViewUtils;
+import com.umeng.message.PushAgent;
+import com.umeng.message.UmengRegistrar;
 
 import butterknife.Bind;
 
@@ -66,6 +68,14 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void init() {
         super.init();
+        //开启友盟推送
+        PushAgent mPushAgent = PushAgent.getInstance(mContext);
+        mPushAgent.enable();
+
+        String device_token = UmengRegistrar.getRegistrationId(mContext);
+        System.out.println("device_token:"+device_token);
+        // 可以通过接口 mPushAgent.disable(); 来关闭客户端的通知服务。
+        //通过mPushAgent.isEnabled() 来查询状态。 状态表示有没有启用/关闭推送功能， 不表示推送后台服务的运行状态。
         mFragmentManager = getSupportFragmentManager();
     }
 
@@ -145,7 +155,7 @@ public class MainActivity extends BaseActivity {
                     case R.id.navigation_item_switch_theme:
 //                        switchFragment(StickyFragment.class);
                         setTitle("截图");
-                        switchFragment(ScreenshotFragment.class);
+                        switchFragment(PrintAndroidCircleProgressbarFragment.class);
                         break;
                     case R.id.navigation_item_about:
                         break;

@@ -13,6 +13,9 @@ import android.widget.TextView;
 import com.edu.zum.easyapp.R;
 import com.edu.zum.easyapp.base.AnimatorUtil;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 import butterknife.Bind;
 import butterknife.OnClick;
 
@@ -65,7 +68,6 @@ public class AnimatonFragment extends BaseFragment {
         animationDrawable = (AnimationDrawable) prLoading.getDrawable();
         prLoading1 = $(R.id.ptr_loading1);
 
-
     }
 
     @OnClick({R.id.anim_pk_left, R.id.anim_pk_right, R.id.start})
@@ -77,30 +79,26 @@ public class AnimatonFragment extends BaseFragment {
                 break;
             case R.id.start:
                 animationDrawable.start();
-                sendGift();
 //                AnimatorUtil.translationPK(animPkLeft, mContext.getResources().getDimension(R.dimen.margin_200dp), animPkRight, mContext.getResources().getDimension(R.dimen.margin_right)).start();
 //                mythread = new Thread(new MyThread());
-//                mythread.start();
-//                new Timer().schedule(new TimerTask() {
-//                    int times = 3;
-//
-//                    public void run() {
-//                        System.out.println("time:" + times);
-//                        if (times > 0) {
-//                            mHandler.sendEmptyMessage(times);
-//                            times--;
-//                        } else {
-//                            cancel();
-//                        }
-//                    }
-//                }, 500, 800);
+                mythread.start();
+                new Timer().schedule(new TimerTask() {
+                    int times = 3;
+
+                    public void run() {
+                        System.out.println("time:" + times);
+                        if (times > 0) {
+                            mHandler.sendEmptyMessage(times);
+                            times--;
+                        } else {
+                            cancel();
+                        }
+                    }
+                }, 500, 800);
                 break;
         }
     }
 
-    private void sendGift() {
-        AnimatorUtil.sendGift(animGiftLl, animGiftImg, animGiftCount, 4).start();
-    }
 
     Handler mHandler = new Handler() {
         @Override

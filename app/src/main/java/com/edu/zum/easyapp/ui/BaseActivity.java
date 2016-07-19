@@ -2,6 +2,7 @@ package com.edu.zum.easyapp.ui;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -10,6 +11,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -20,6 +23,7 @@ import com.edu.zum.easyapp.utils.NetworkUtil;
 import com.edu.zum.easyapp.utils.StatusBarUtil;
 import com.edu.zum.easyapp.utils.ToastUtil;
 import com.umeng.analytics.MobclickAgent;
+import com.umeng.message.PushAgent;
 import com.zmnedu.library.widgets.MultiStateView;
 
 import butterknife.ButterKnife;
@@ -56,6 +60,19 @@ public abstract class BaseActivity extends AppCompatActivity {
 //        getWindow().
 //                getDecorView().
 //                setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
+//        getWindow().getDecorView().setSystemUiVisibility(
+//                View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+//                        | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+//                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+//                        | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
+//                        | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+//        );
+        //设置透明
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT){
+            Window window = getWindow();
+            window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        }
+
         ButterKnife.bind(this);
         init();
         initToolBar();
@@ -86,7 +103,11 @@ public abstract class BaseActivity extends AppCompatActivity {
      * 做一些与View无关的操作
      */
     protected void init() {
+
         mContext = this;
+
+        PushAgent.getInstance(mContext).onAppStart();
+//        注意: 此方法与统计分析sdk中统计日活的方法无关！请务必调用此方法！
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
@@ -248,11 +269,13 @@ public abstract class BaseActivity extends AppCompatActivity {
         intent.putExtras(extras);
         startActivity(intent);
     }
+
     @Override
     public void onResume() {
         super.onResume();
         MobclickAgent.onResume(this);
     }
+
     @Override
     public void onPause() {
         super.onPause();
