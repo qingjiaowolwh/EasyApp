@@ -11,6 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.edu.zum.easyapp.R;
+import com.edu.zum.easyapp.Thread.MyThread;
 import com.edu.zum.easyapp.base.AnimatorUtil;
 
 import java.util.Timer;
@@ -80,7 +81,7 @@ public class AnimatonFragment extends BaseFragment {
             case R.id.start:
                 animationDrawable.start();
 //                AnimatorUtil.translationPK(animPkLeft, mContext.getResources().getDimension(R.dimen.margin_200dp), animPkRight, mContext.getResources().getDimension(R.dimen.margin_right)).start();
-//                mythread = new Thread(new MyThread());
+                mythread = new Thread(new MyThread());
                 mythread.start();
                 new Timer().schedule(new TimerTask() {
                     int times = 3;
@@ -95,6 +96,8 @@ public class AnimatonFragment extends BaseFragment {
                         }
                     }
                 }, 500, 800);
+                break;
+            default:
                 break;
         }
     }

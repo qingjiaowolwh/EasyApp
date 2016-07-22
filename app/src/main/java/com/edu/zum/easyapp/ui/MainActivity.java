@@ -20,6 +20,7 @@ import com.edu.zum.easyapp.fragment.PrintAndroidCircleProgressbarFragment;
 import com.edu.zum.easyapp.fragment.SecondFragment;
 import com.edu.zum.easyapp.fragment.StickyFragment;
 import com.edu.zum.easyapp.utils.ViewUtils;
+import com.orhanobut.logger.Logger;
 import com.umeng.message.PushAgent;
 import com.umeng.message.UmengRegistrar;
 
@@ -51,6 +52,12 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void setUpView() {
+        String hello="hello";
+        Logger.d(hello);
+        Logger.e(hello);
+        Logger.w("fd");
+        Logger.v(hello);
+        Logger.wtf(hello);
         setDrawerLayout();
         mCurrentFragment = ViewUtils.createFragment(FirstFragment.class);
         mFragmentManager.beginTransaction().add(R.id.frame_content, mCurrentFragment).commit();

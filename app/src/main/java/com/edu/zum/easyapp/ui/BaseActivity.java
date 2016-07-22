@@ -13,15 +13,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.TextView;
 
 import com.edu.zum.easyapp.R;
+import com.edu.zum.easyapp.global.MyApplication;
 import com.edu.zum.easyapp.rxbus.RxBus;
 import com.edu.zum.easyapp.rxbus.RxBusEvent;
 import com.edu.zum.easyapp.utils.NetworkUtil;
 import com.edu.zum.easyapp.utils.StatusBarUtil;
 import com.edu.zum.easyapp.utils.ToastUtil;
+import com.squareup.leakcanary.RefWatcher;
 import com.umeng.analytics.MobclickAgent;
 import com.umeng.message.PushAgent;
 import com.zmnedu.library.widgets.MultiStateView;
@@ -38,10 +39,6 @@ public abstract class BaseActivity extends AppCompatActivity {
      * 可以显示加载  内容  错误   空等视图的自定义View
      */
     private MultiStateView multiStateView;
-    /**
-     * 网络请求失败后的重试按钮
-     */
-    private Button retry;
 
     private Handler mHandker = new Handler();
     private Runnable mRun;
@@ -68,11 +65,12 @@ public abstract class BaseActivity extends AppCompatActivity {
 //                        | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
 //        );
         //设置透明
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             Window window = getWindow();
             window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         }
-
+        RefWatcher refWatcher = MyApplication.getRefWatcher(this);
+        refWatcher.watch(this);
         ButterKnife.bind(this);
         init();
         initToolBar();
@@ -177,10 +175,11 @@ public abstract class BaseActivity extends AppCompatActivity {
                     MultiStateView.VIEW_STATE_ERROR);
             multiStateView.setViewForState(R.layout.layout_empty_view,
                     MultiStateView.VIEW_STATE_EMPTY);
+
+            // 网络请求失败后的重试按
             multiStateView.getView(MultiStateView.VIEW_STATE_ERROR)
                     .findViewById(R.id.retry).setOnClickListener(OnClickListener);
             multiStateView.setViewState(MultiStateView.VIEW_STATE_LOADING);
-            retry = (Button) findViewById(R.id.retry);
         }
     }
 

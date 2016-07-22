@@ -62,7 +62,8 @@ public class PrintAndroidCircleProgressbarFragment extends BaseFragment implemen
     @Override
     protected void setUpView() {
         super.setUpView();
-        getContentView().findViewById(R.id.kaishi).setOnClickListener(this);
+        getContentView().findViewById(R.id.start).setOnClickListener(this);
+        getContentView().findViewById(R.id.stop).setOnClickListener(this);
         PrintTextView tv = (PrintTextView) getContentView().findViewById(R.id.printText);
         tv.printString("你空间放到空间急急急急急急急急急急急急机可怜见看都是非法的地方大师傅士大夫但是范德萨范德萨似的大师傅大师傅似的法大师傅士大夫士大夫士大夫犯得上发射点来非得加上了顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶");
 
@@ -126,17 +127,22 @@ public class PrintAndroidCircleProgressbarFragment extends BaseFragment implemen
 
     @Override
     public void onClick(View v) {
-        mTvDefault.reStart();
-        mTvFive.reStart();
-        mTvCicleColor.reStart();
-        mTvCount.reStart();
-        mTvWide.reStart();
-        mTvNarrow.reStart();
-        mTvRedPro.reStart();
-        mTvRedFrame.reStart();
-        mTvRedCircle.reStart();
-        mTvProgressBar1.reStart();
-        mTvProgressBar2.reStart();
-        mTvSkip.reStart();
+        if (v.getId() == R.id.start) {
+            mTvDefault.start();
+            mTvFive.reStart();
+            mTvCicleColor.reStart();
+            mTvCount.reStart();
+            mTvWide.reStart();
+            mTvNarrow.reStart();
+            mTvRedPro.reStart();
+            mTvRedFrame.reStart();
+            mTvRedCircle.reStart();
+            mTvProgressBar1.reStart();
+            mTvProgressBar2.reStart();
+            mTvSkip.reStart();
+        }
+        if (v.getId() == R.id.stop) {
+            mTvDefault.stop();
+        }
     }
 }
