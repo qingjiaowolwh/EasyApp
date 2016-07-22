@@ -55,6 +55,7 @@ public class AssetsToSDCard {
             }
             zipInputStream.close();
         } catch (Exception e) {
+            e.printStackTrace();
         }
 
 

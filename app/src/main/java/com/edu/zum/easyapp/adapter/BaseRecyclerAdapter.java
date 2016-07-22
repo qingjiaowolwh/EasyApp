@@ -14,7 +14,6 @@ import java.util.List;
  * Created by lwh on 2016/3/31.
  */
 public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<BaseViewHolder> {
-    protected LayoutInflater mInflater;
     protected List<T> mDatas = new ArrayList<>();
     private OnItemClickListener<T> mOnItemClickListener;
     private OnItemLongClickListener<T> mOnItemLongClickListener;
@@ -95,7 +94,6 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<BaseVi
     @Override
     public BaseViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         mContext = parent.getContext();
-        mInflater = LayoutInflater.from(mContext);
         View view = LayoutInflater.from(parent.getContext()).inflate(setItemLayoutResourceID(), parent, false);
         return setViewHolder(view, viewType, parent);
 
@@ -126,7 +124,7 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<BaseVi
         }
     }
 
-    private OnItemChildClickListener mChildClickListener;
+    public OnItemChildClickListener mChildClickListener;
 
     /**
      * 给Item的childView设置监听
