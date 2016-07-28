@@ -6,6 +6,8 @@ import android.content.Context;
 import com.orhanobut.logger.Logger;
 import com.squareup.leakcanary.LeakCanary;
 import com.squareup.leakcanary.RefWatcher;
+
+import com.edu.zum.easyapp.easemob.helpdeskdemo.DemoHelper;
 //import android.provider.Settings;
 //
 //import com.edu.zum.easyapp.utils.ImageLoaderHelper;
@@ -18,6 +20,10 @@ import com.squareup.leakcanary.RefWatcher;
  */
 public class MyApplication extends Application {
     private static MyApplication mInstance;
+    public static Context applicationContext;
+
+    // login user name
+    public final String PREF_USERNAME = "username";
 
     public static RefWatcher getRefWatcher(Context context) {
 //        MyApplication application = (MyApplication) context.getApplicationContext();
@@ -32,6 +38,9 @@ public class MyApplication extends Application {
         Logger.init("hello");
         refWatcher = LeakCanary.install(this);
         mInstance = this;
+        applicationContext = this;
+        // init demo helper
+        DemoHelper.getInstance().init(applicationContext);
 //        ImageLoader.getInstance().init(
 //                ImageLoaderHelper.getInstance(this)
 //                        .getImageLoaderConfiguration(Constants.IMAGE_LOADER_CACHE_PATH));

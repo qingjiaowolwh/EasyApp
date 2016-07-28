@@ -1,7 +1,5 @@
 package com.edu.zum.easyapp.fragment;
 
-import android.animation.AnimatorSet;
-import android.animation.ObjectAnimator;
 import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,8 +7,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import com.edu.zum.easyapp.R;
-import com.edu.zum.easyapp.utils.PopUtil;
-import com.edu.zum.easyapp.utils.ScreenUtils;
 import com.edu.zum.easyapp.utils.ToastUtil;
 
 public class ScreenshotFragment extends BaseFragment {
@@ -47,20 +43,20 @@ public class ScreenshotFragment extends BaseFragment {
         $(R.id.shot).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                bitmap = ScreenUtils.snapShotWithStatusBar(getActivity());
-                if (bitmap != null) {
-                    shotImg.setImageBitmap(bitmap);
-                    new PopUtil(getActivity(), view, v).showCenter();
-                    ObjectAnimator scaleX = ObjectAnimator.ofFloat(view, "scaleX", 1.0f, 0.8f);
-                    ObjectAnimator scaleY = ObjectAnimator.ofFloat(view, "scaleY", 1.0f, 0.8f);
-                    AnimatorSet animSet = new AnimatorSet();
-                    animSet.play(scaleX).with(scaleY);
-                    animSet.setDuration(500);
-                    animSet.start();
-                }
+//                bitmap = ScreenUtils.snapShotWithStatusBar(getActivity());
+//                if (bitmap != null) {
+//                    shotImg.setImageBitmap(bitmap);
+//                    new PopUtil(getActivity(), view, v).showCenter();
+//                    ObjectAnimator scaleX = ObjectAnimator.ofFloat(view, "scaleX", 1.0f, 0.8f);
+//                    ObjectAnimator scaleY = ObjectAnimator.ofFloat(view, "scaleY", 1.0f, 0.8f);
+//                    AnimatorSet animSet = new AnimatorSet();
+//                    animSet.play(scaleX).with(scaleY);
+//                    animSet.setDuration(500);
+//                    animSet.start();
+//                }
+
             }
         });
     }
-
 
 }

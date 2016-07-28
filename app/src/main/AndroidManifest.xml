@@ -32,6 +32,20 @@
             android:label="@string/title_activity_change_fragment"
             android:theme="@style/AppTheme">
         </activity>
+
+        <!--环信客服-->
+        <meta-data
+            android:name="EASEMOB_APPKEY"
+            android:value="123lwh#easyapp"/>
+
+        <activity android:name=".easemob.helpdeskdemo.ui.LoginActivity"/>
+        <activity android:name=".easemob.helpdeskdemo.ui.ChatActivity"/>
+        <activity android:name=".easemob.helpdeskdemo.ui.ContextMenuActivity"/>
+        <activity android:name=".easemob.helpdeskdemo.ui.SatisfactionActivity"/>
+        <activity android:name=".easemob.helpdeskdemo.ui.ShopDetailsActivity"/>
+        <activity android:name="com.easemob.easeui.ui.EaseBaiduMapActivity"/>
+        <activity android:name="com.easemob.easeui.ui.EaseBaseActivity"/>
+        <activity android:name=".easemob.helpdeskdemo.ui.ShortCutMsgActivity"/>
         <!-- 统计 -->
         <meta-data
             android:name="UMENG_APPKEY"

@@ -16,7 +16,7 @@ import android.view.View;
 import com.edu.zum.easyapp.R;
 import com.edu.zum.easyapp.fragment.AnimatonFragment;
 import com.edu.zum.easyapp.fragment.FirstFragment;
-import com.edu.zum.easyapp.fragment.PrintAndroidCircleProgressbarFragment;
+import com.edu.zum.easyapp.fragment.ScreenshotFragment;
 import com.edu.zum.easyapp.fragment.SecondFragment;
 import com.edu.zum.easyapp.fragment.StickyFragment;
 import com.edu.zum.easyapp.utils.ViewUtils;
@@ -162,7 +162,7 @@ public class MainActivity extends BaseActivity {
                     case R.id.navigation_item_switch_theme:
 //                        switchFragment(StickyFragment.class);
                         setTitle("截图");
-                        switchFragment(PrintAndroidCircleProgressbarFragment.class);
+                        switchFragment(ScreenshotFragment.class);
                         break;
                     case R.id.navigation_item_about:
                         break;
