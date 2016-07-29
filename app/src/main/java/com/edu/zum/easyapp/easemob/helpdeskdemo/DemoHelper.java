@@ -39,7 +39,6 @@ import com.edu.zum.easyapp.easemob.helpdeskdemo.domain.EmojiconExampleGroupData;
 import com.edu.zum.easyapp.easemob.helpdeskdemo.ui.ChatActivity;
 import com.edu.zum.easyapp.easemob.helpdeskdemo.utils.PreferenceManager;
 import com.edu.zum.easyapp.ui.MainActivity;
-import com.zmnedu.library.utils.ImageUtil;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -51,64 +50,65 @@ public class DemoHelper {
 
     protected static final String TAG = DemoHelper.class.getSimpleName();
 
-    private EaseUI easeUI;
+	private EaseUI easeUI;
 
     /**
      * EMEventListener
      */
     protected EMEventListener eventListener = null;
 
-    private Map<String, EaseUser> contactList;
+	private Map<String, EaseUser> contactList;
 
-    private static DemoHelper instance = null;
+	private static DemoHelper instance = null;
 
-    private DemoModel demoModel = null;
+	private DemoModel demoModel = null;
 
     private boolean alreadyNotified = false;
 
-    public boolean isVoiceCalling;
+	public boolean isVoiceCalling;
     public boolean isVideoCalling;
 
-    private String username;
+	private String username;
 
     private Context appContext;
 
     private EMConnectionListener connectionListener;
 
-    private DemoHelper() {
-    }
+	private DemoHelper() {
+	}
 
-    public synchronized static DemoHelper getInstance() {
-        if (instance == null) {
-            instance = new DemoHelper();
-        }
-        return instance;
-    }
+	public synchronized static DemoHelper getInstance() {
+		if (instance == null) {
+			instance = new DemoHelper();
+		}
+		return instance;
+	}
 
-    /**
-     * init helper
-     *
-     * @param context application context
-     */
-    public void init(Context context) {
-        if (EaseUI.getInstance().init(context)) {
-            appContext = context;
+	/**
+	 * init helper
+	 *
+	 * @param context
+	 *            application context
+	 */
+	public void init(Context context) {
+		if (EaseUI.getInstance().init(context)) {
+		    appContext = context;
             //在小米手机上当app被kill时使用小米推送进行消息提示，SDK已支持，可选
 //            EMChatManager.getInstance().setMipushConfig("2882303761517370134", "5131737040134");
-            //设为调试模式，打成正式包时，最好设为false，以免消耗额外的资源
-            EMChat.getInstance().setDebugMode(true);
-            //get easeui instance
-            easeUI = EaseUI.getInstance();
-            //调用easeui的api设置providers
-            setEaseUIProviders();
-            demoModel = new DemoModel(context);
-            //初始化PreferenceManager
-            PreferenceManager.init(context);
-            //设置全局监听
-            setGlobalListeners();
+		    //设为调试模式，打成正式包时，最好设为false，以免消耗额外的资源
+		    EMChat.getInstance().setDebugMode(true);
+		    //get easeui instance
+		    easeUI = EaseUI.getInstance();
+		    //调用easeui的api设置providers
+		    setEaseUIProviders();
+		    demoModel = new DemoModel(context);
+			//初始化PreferenceManager
+			PreferenceManager.init(context);
+			//设置全局监听
+			setGlobalListeners();
 //			broadcastManager = LocalBroadcastManager.getInstance(appContext);
-        }
-    }
+		}
+	}
 
     protected void setEaseUIProviders() {
         //设置昵称头像
@@ -123,16 +123,8 @@ public class DemoHelper {
                     //            UserUtils.setUserNick(EMChatManager.getInstance().getCurrentUser(), usernickView);
                 } else {
                     if (jsonAgent == null) {
-                        String easyUrl = "";
-                        String easynick="";
-                        try {
-                            easyUrl = message.getStringAttribute("easyUri");
-                            easynick = message.getStringAttribute("easynick");
-                        } catch (EaseMobException e) {
-                            e.printStackTrace();
-                        }
-                        ImageUtil.displayImage(context, easyUrl, userAvatarView);
-                        usernickView.setText(easynick);
+                        userAvatarView.setImageResource(R.drawable.ease_default_avatar);
+                        usernickView.setText(message.getFrom());
                     } else {
                         String strNick = null;
                         String strUrl = null;
@@ -234,14 +226,14 @@ public class DemoHelper {
     /**
      * 设置全局事件监听
      */
-    protected void setGlobalListeners() {
+    protected void setGlobalListeners(){
         // create the global connection listener
         connectionListener = new EMConnectionListener() {
             @Override
             public void onDisconnected(int error) {
                 if (error == EMError.USER_REMOVED) {
                     onCurrentAccountRemoved();
-                } else if (error == EMError.CONNECTION_CONFLICT) {
+                }else if (error == EMError.CONNECTION_CONFLICT) {
                     onConnectionConflict();
                 }
             }
@@ -249,7 +241,7 @@ public class DemoHelper {
             @Override
             public void onConnected() {
                 // in case group and contact were already synced, we supposed to notify sdk we are ready to receive the events
-                DemoHelper.getInstance().notifyForRecevingEvents();
+            	DemoHelper.getInstance().notifyForRecevingEvents();
             }
         };
         //注册连接监听
@@ -261,7 +253,7 @@ public class DemoHelper {
     /**
      * 账号在别的设备登录
      */
-    protected void onConnectionConflict() {
+    protected void onConnectionConflict(){
         Intent intent = new Intent(appContext, MainActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.putExtra(Constant.ACCOUNT_CONFLICT, true);
@@ -271,14 +263,14 @@ public class DemoHelper {
     /**
      * 账号被移除
      */
-    protected void onCurrentAccountRemoved() {
+    protected void onCurrentAccountRemoved(){
         Intent intent = new Intent(appContext, MainActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.putExtra(Constant.ACCOUNT_REMOVED, true);
         appContext.startActivity(intent);
     }
 
-    /**
+	 /**
      * 全局事件监听
      * 因为可能会有UI页面先处理到这个消息，所以一般如果UI页面已经处理，这里就不需要再次处理
      * activityList.size() <= 0 意味着所有页面都已经在后台运行，或者已经离开Activity Stack
@@ -290,71 +282,72 @@ public class DemoHelper {
             @Override
             public void onEvent(EMNotifierEvent event) {
                 EMMessage message = null;
-                if (event.getData() instanceof EMMessage) {
-                    message = (EMMessage) event.getData();
+                if(event.getData() instanceof EMMessage){
+                    message = (EMMessage)event.getData();
                     EMLog.d(TAG, "receive the event : " + event.getEvent() + ",id : " + message.getMsgId());
                 }
 
                 switch (event.getEvent()) {
-                    case EventNewMessage:
-                        //应用在后台，不需要刷新UI,通知栏提示新消息
-                        if (!easeUI.hasForegroundActivies()) {
-                            getNotifier().onNewMsg(message);
-                        }
-                        break;
-                    case EventOfflineMessage:
-                        if (!easeUI.hasForegroundActivies()) {
-                            EMLog.d(TAG, "received offline messages");
-                            List<EMMessage> messages = (List<EMMessage>) event.getData();
-                            getNotifier().onNewMesg(messages);
-                        }
-                        break;
-                    // below is just giving a example to show a cmd toast, the app should not follow this
-                    // so be careful of this
-                    case EventNewCMDMessage: {
-
-                        EMLog.d(TAG, "收到透传消息");
-                        //获取消息body
-                        CmdMessageBody cmdMsgBody = (CmdMessageBody) message.getBody();
-                        final String action = cmdMsgBody.action;//获取自定义action
-
-                        //获取扩展属性 此处省略
-                        //message.getStringAttribute("");
-                        EMLog.d(TAG, String.format("透传消息：action:%s,message:%s", action, message.toString()));
-                        final String str = appContext.getString(R.string.receive_the_passthrough);
-
-                        final String CMD_TOAST_BROADCAST = "easemob.demo.cmd.toast";
-                        IntentFilter cmdFilter = new IntentFilter(CMD_TOAST_BROADCAST);
-
-                        if (broadCastReceiver == null) {
-                            broadCastReceiver = new BroadcastReceiver() {
-
-                                @Override
-                                public void onReceive(Context context, Intent intent) {
-                                    // TODO Auto-generated method stub
-                                    Toast.makeText(appContext, intent.getStringExtra("cmd_value"), Toast.LENGTH_SHORT).show();
-                                }
-                            };
-
-                            //注册广播接收者
-                            appContext.registerReceiver(broadCastReceiver, cmdFilter);
-                        }
-
-                        Intent broadcastIntent = new Intent(CMD_TOAST_BROADCAST);
-                        broadcastIntent.putExtra("cmd_value", str + action);
-                        appContext.sendBroadcast(broadcastIntent, null);
-
-                        break;
+                case EventNewMessage:
+                    //应用在后台，不需要刷新UI,通知栏提示新消息
+                    if(!easeUI.hasForegroundActivies()){
+                        getNotifier().onNewMsg(message);
                     }
-                    case EventDeliveryAck:
-                        message.setDelivered(true);
-                        break;
-                    case EventReadAck:
-                        message.setAcked(true);
-                        break;
-                    // add other events in case you are interested in
-                    default:
-                        break;
+                    break;
+                case EventOfflineMessage:
+                    if(!easeUI.hasForegroundActivies()){
+                        EMLog.d(TAG, "received offline messages");
+                        List<EMMessage> messages = (List<EMMessage>) event.getData();
+                        getNotifier().onNewMesg(messages);
+                    }
+                    break;
+                // below is just giving a example to show a cmd toast, the app should not follow this
+                // so be careful of this
+                case EventNewCMDMessage:
+                {
+
+                    EMLog.d(TAG, "收到透传消息");
+                    //获取消息body
+                    CmdMessageBody cmdMsgBody = (CmdMessageBody) message.getBody();
+                    final String action = cmdMsgBody.action;//获取自定义action
+
+                    //获取扩展属性 此处省略
+                    //message.getStringAttribute("");
+                    EMLog.d(TAG, String.format("透传消息：action:%s,message:%s", action,message.toString()));
+                    final String str = appContext.getString(R.string.receive_the_passthrough);
+
+                    final String CMD_TOAST_BROADCAST = "easemob.demo.cmd.toast";
+                    IntentFilter cmdFilter = new IntentFilter(CMD_TOAST_BROADCAST);
+
+                    if(broadCastReceiver == null){
+                        broadCastReceiver = new BroadcastReceiver(){
+
+                            @Override
+                            public void onReceive(Context context, Intent intent) {
+                                // TODO Auto-generated method stub
+                                Toast.makeText(appContext, intent.getStringExtra("cmd_value"), Toast.LENGTH_SHORT).show();
+                            }
+                        };
+
+                      //注册广播接收者
+                        appContext.registerReceiver(broadCastReceiver,cmdFilter);
+                    }
+
+                    Intent broadcastIntent = new Intent(CMD_TOAST_BROADCAST);
+                    broadcastIntent.putExtra("cmd_value", str+action);
+                    appContext.sendBroadcast(broadcastIntent, null);
+
+                    break;
+                }
+                case EventDeliveryAck:
+                    message.setDelivered(true);
+                    break;
+                case EventReadAck:
+                    message.setAcked(true);
+                    break;
+                // add other events in case you are interested in
+                default:
+                    break;
                 }
 
             }
@@ -363,91 +356,91 @@ public class DemoHelper {
         EMChatManager.getInstance().registerEventListener(eventListener);
     }
 
-    /**
-     * 是否登录成功过
-     *
-     * @return
-     */
-    public boolean isLoggedIn() {
-        return EMChat.getInstance().isLoggedIn();
-    }
+	/**
+	 * 是否登录成功过
+	 *
+	 * @return
+	 */
+	public boolean isLoggedIn() {
+		return EMChat.getInstance().isLoggedIn();
+	}
 
-    /**
-     * 退出登录
-     *
-     * @param unbindDeviceToken 是否解绑设备token(使用GCM才有)
-     * @param callback          callback
-     */
-    public void logout(boolean unbindDeviceToken, final EMCallBack callback) {
-        EMChatManager.getInstance().logout(unbindDeviceToken, new EMCallBack() {
+	/**
+	 * 退出登录
+	 *
+	 * @param unbindDeviceToken
+	 *            是否解绑设备token(使用GCM才有)
+	 * @param callback
+	 *            callback
+	 */
+	public void logout(boolean unbindDeviceToken, final EMCallBack callback) {
+		EMChatManager.getInstance().logout(unbindDeviceToken, new EMCallBack() {
 
-            @Override
-            public void onSuccess() {
-                if (callback != null) {
-                    callback.onSuccess();
-                }
+			@Override
+			public void onSuccess() {
+				if (callback != null) {
+					callback.onSuccess();
+				}
 
-            }
+			}
 
-            @Override
-            public void onProgress(int progress, String status) {
-                if (callback != null) {
-                    callback.onProgress(progress, status);
-                }
-            }
+			@Override
+			public void onProgress(int progress, String status) {
+				if (callback != null) {
+					callback.onProgress(progress, status);
+				}
+			}
 
-            @Override
-            public void onError(int code, String error) {
-                if (callback != null) {
-                    callback.onError(code, error);
-                }
-            }
-        });
-    }
+			@Override
+			public void onError(int code, String error) {
+				if (callback != null) {
+					callback.onError(code, error);
+				}
+			}
+		});
+	}
 
-    /**
-     * 获取消息通知类
-     *
-     * @return
-     */
-    public EaseNotifier getNotifier() {
-        return easeUI.getNotifier();
-    }
+	/**
+	 * 获取消息通知类
+	 * @return
+	 */
+	public EaseNotifier getNotifier(){
+	    return easeUI.getNotifier();
+	}
 
-    public DemoModel getModel() {
+	public DemoModel getModel(){
         return (DemoModel) demoModel;
     }
 
 
     /**
      * 设置当前用户的环信id
-     *
      * @param username
      */
-    public void setCurrentUserName(String username) {
-        this.username = username;
-        demoModel.setCurrentUserName(username);
+    public void setCurrentUserName(String username){
+    	this.username = username;
+    	demoModel.setCurrentUserName(username);
     }
 
     /**
      * 设置当前用户的环信密码
      */
-    public void setCurrentPassword(String password) {
-        demoModel.setCurrentUserPwd(password);
+    public void setCurrentPassword(String password){
+    	demoModel.setCurrentUserPwd(password);
     }
 
     /**
      * 获取当前用户的环信id
      */
-    public String getCurrentUsernName() {
-        if (username == null) {
-            username = demoModel.getCurrentUsernName();
-        }
-        return username;
+    public String getCurrentUsernName(){
+    	if(username == null){
+    		username = demoModel.getCurrentUsernName();
+    	}
+    	return username;
     }
 
-    public synchronized void notifyForRecevingEvents() {
-        if (alreadyNotified) {
+	public synchronized void notifyForRecevingEvents(){
+        if(alreadyNotified){
             return;
         }
 
@@ -464,77 +457,75 @@ public class DemoHelper {
         easeUI.popActivity(activity);
     }
 
-    public boolean isRobotMenuMessage(EMMessage message) {
-        try {
-            JSONObject jsonObj = message.getJSONObjectAttribute(Constant.MESSAGE_ATTR_MSGTYPE);
-            if (jsonObj.has("choice") && !jsonObj.isNull("choice")) {
+    public boolean isRobotMenuMessage(EMMessage message){
+    	try {
+			JSONObject jsonObj = message.getJSONObjectAttribute(Constant.MESSAGE_ATTR_MSGTYPE);
+			if (jsonObj.has("choice") && !jsonObj.isNull("choice")) {
                 JSONObject jsonChoice = jsonObj.getJSONObject("choice");
-                if (jsonChoice.has("items") || jsonChoice.has("list")) {
+                if(jsonChoice.has("items") || jsonChoice.has("list")){
                     return true;
                 }
-            }
-        } catch (Exception e) {
-        }
-        return false;
+			}
+		} catch (Exception e) {
+		}
+		return false;
     }
 
     public String getRobotMenuMessageDigest(EMMessage message) {
-        String title = "";
-        try {
-            JSONObject jsonObj = message.getJSONObjectAttribute(Constant.MESSAGE_ATTR_MSGTYPE);
-            if (jsonObj.has("choice")) {
-                JSONObject jsonChoice = jsonObj.getJSONObject("choice");
-                title = jsonChoice.getString("title");
-            }
-        } catch (Exception e) {
-        }
-        return title;
-    }
+		String title = "";
+		try {
+			JSONObject jsonObj = message.getJSONObjectAttribute(Constant.MESSAGE_ATTR_MSGTYPE);
+			if (jsonObj.has("choice")) {
+				JSONObject jsonChoice = jsonObj.getJSONObject("choice");
+				title = jsonChoice.getString("title");
+			}
+		} catch (Exception e) {
+		}
+		return title;
+	}
 
     //it is evaluation message
-    public boolean isEvalMessage(EMMessage message) {
-        try {
-            JSONObject jsonObj = message.getJSONObjectAttribute(Constant.WEICHAT_MSG);
-            if (jsonObj.has("ctrlType")) {
-                try {
-                    String type = jsonObj.getString("ctrlType");
-                    if (!TextUtils.isEmpty(type) && (type.equalsIgnoreCase("inviteEnquiry") || type.equalsIgnoreCase("enquiry"))) {
-                        return true;
-                    }
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-        } catch (EaseMobException e) {
-        }
-        return false;
-    }
+    public boolean isEvalMessage(EMMessage message){
+		try {
+			JSONObject jsonObj = message.getJSONObjectAttribute(Constant.WEICHAT_MSG);
+			if(jsonObj.has("ctrlType")){
+				try {
+					String type = jsonObj.getString("ctrlType");
+					if(!TextUtils.isEmpty(type)&&(type.equalsIgnoreCase("inviteEnquiry")||type.equalsIgnoreCase("enquiry"))){
+						return true;
+					}
+				} catch (JSONException e) {
+					e.printStackTrace();
+				}
+			}
+		} catch (EaseMobException e) {
+		}
+		return false;
+	}
 
     /**
      * 检测是否为订单消息或者为轨迹消息
-     *
      * @param message
      * @return
      */
-    public boolean isPictureTxtMessage(EMMessage message) {
-        JSONObject jsonObj = null;
-        try {
-            jsonObj = message.getJSONObjectAttribute(Constant.MESSAGE_ATTR_MSGTYPE);
-        } catch (EaseMobException e) {
-        }
-        if (jsonObj == null) {
-            return false;
-        }
-        if (jsonObj.has("order") || jsonObj.has("track")) {
-            return true;
-        }
-        return false;
+    public boolean isPictureTxtMessage(EMMessage message){
+    	JSONObject jsonObj = null;
+    	try {
+			jsonObj = message.getJSONObjectAttribute(Constant.MESSAGE_ATTR_MSGTYPE);
+		} catch (EaseMobException e) {
+		}
+    	if(jsonObj == null){
+			return false;
+		}
+		if(jsonObj.has("order") || jsonObj.has("track")){
+			return true;
+		}
+		return false;
     }
 
     /**
      * 显示客服昵称和头像信息
      * 获取头像和昵称
-     *
      * @param message
      * @return
      */
@@ -558,13 +549,13 @@ public class DemoHelper {
     /**
      * 检测是否为转人工的消息，如果是则需要显示转人工的按钮
      */
-    public boolean isTransferToKefuMsg(EMMessage message) {
+    public boolean isTransferToKefuMsg(EMMessage message){
         try {
             JSONObject jsonObj = message.getJSONObjectAttribute(Constant.WEICHAT_MSG);
-            if (jsonObj.has("ctrlType")) {
+            if(jsonObj.has("ctrlType")){
                 try {
                     String type = jsonObj.getString("ctrlType");
-                    if (!TextUtils.isEmpty(type) && type.equalsIgnoreCase("TransferToKfHint")) {
+                    if(!TextUtils.isEmpty(type)&&type.equalsIgnoreCase("TransferToKfHint")){
                         return true;
                     }
                 } catch (JSONException e) {
