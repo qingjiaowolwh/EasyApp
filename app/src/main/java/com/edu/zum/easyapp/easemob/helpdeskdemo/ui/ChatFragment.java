@@ -108,7 +108,7 @@ public class ChatFragment extends EaseChatFragment implements EaseChatFragment.E
         //增加扩展item
         inputMenu.registerExtendMenuItem(R.string.attach_file, R.drawable.em_chat_file_selector, ITEM_FILE, extendMenuItemClickListener);
         // 增加扩展item
-        inputMenu.registerExtendMenuItem(R.string.attach_short_cut_message, R.drawable.ic_launcher, ITEM_SHORT_CUT_MESSAGE, extendMenuItemClickListener);
+        inputMenu.registerExtendMenuItem(R.string.attach_short_cut_message, R.drawable.em_icon_answer, ITEM_SHORT_CUT_MESSAGE, extendMenuItemClickListener);
     }
 
     @SuppressLint("NewApi")

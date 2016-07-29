@@ -19,6 +19,7 @@ import com.edu.zum.easyapp.fragment.FirstFragment;
 import com.edu.zum.easyapp.fragment.ScreenshotFragment;
 import com.edu.zum.easyapp.fragment.SecondFragment;
 import com.edu.zum.easyapp.fragment.StickyFragment;
+import com.edu.zum.easyapp.fragment.WordFragment;
 import com.edu.zum.easyapp.utils.ViewUtils;
 import com.orhanobut.logger.Logger;
 import com.umeng.message.PushAgent;
@@ -52,7 +53,7 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void setUpView() {
-        String hello="hello";
+        String hello = "hello";
         Logger.d(hello);
         Logger.e(hello);
         Logger.w("fd");
@@ -80,7 +81,7 @@ public class MainActivity extends BaseActivity {
         mPushAgent.enable();
 
         String device_token = UmengRegistrar.getRegistrationId(mContext);
-        System.out.println("device_token:"+device_token);
+        System.out.println("device_token:" + device_token);
         // 可以通过接口 mPushAgent.disable(); 来关闭客户端的通知服务。
         //通过mPushAgent.isEnabled() 来查询状态。 状态表示有没有启用/关闭推送功能， 不表示推送后台服务的运行状态。
         mFragmentManager = getSupportFragmentManager();
@@ -165,6 +166,9 @@ public class MainActivity extends BaseActivity {
                         switchFragment(ScreenshotFragment.class);
                         break;
                     case R.id.navigation_item_about:
+                        setTitle("单词");
+                        switchFragment(WordFragment.class);
+
                         break;
                     default:
                         break;

@@ -12,13 +12,13 @@ import com.easemob.easeui.controller.EaseUI.EaseUserProfileProvider;
 import com.easemob.easeui.domain.EaseUser;
 
 public class EaseUserUtils {
-    
+
     static EaseUserProfileProvider userProvider;
-    
+
     static {
         userProvider = EaseUI.getInstance().getUserProfileProvider();
     }
-    
+
     /**
      * 根据username获取相应user
      * @param username
@@ -27,10 +27,10 @@ public class EaseUserUtils {
     public static EaseUser getUserInfo(String username){
         if(userProvider != null)
             return userProvider.getUser(username);
-        
+
         return null;
     }
-    
+
     /**
      * 设置用户头像
      * @param username
@@ -49,7 +49,7 @@ public class EaseUserUtils {
             Glide.with(context).load(R.drawable.ease_default_avatar).into(imageView);
         }
     }
-    
+
     /**
      * 设置用户昵称
      */
@@ -63,5 +63,5 @@ public class EaseUserUtils {
         	}
         }
     }
-    
+
 }

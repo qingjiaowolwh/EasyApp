@@ -29,6 +29,10 @@ public class ImageUtil {
         Glide.with(mActivity).load(url).centerCrop().bitmapTransform(new GlideCircleTransform(mActivity)).into(imageView);
     }
 
+    public static void displayImageCircle(Context mContext, Integer resourceId, ImageView imageView) {
+        Glide.with(mContext).load(resourceId).centerCrop().bitmapTransform(new GlideCircleTransform(mContext)).into(imageView);
+    }
+
     public static void displayImageCircle(Fragment mFragment, String url, ImageView imageView) {
         Glide.with(mFragment).load(url).centerCrop().bitmapTransform(new GlideCircleTransform(mFragment.getContext())).into(imageView);
     }

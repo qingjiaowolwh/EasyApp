@@ -820,7 +820,6 @@ public class EaseChatFragment extends EaseBaseFragment implements EMEventListene
                 }
             }
         }, true).show();
-        ;
     }
 
     /**
