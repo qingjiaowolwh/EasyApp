@@ -44,7 +44,9 @@ dependencies {
     compile 'org.greenrobot:greendao:3.0.0'
     compile 'com.squareup.leakcanary:leakcanary-android-no-op:1.4-beta2'
     compile 'com.orhanobut:logger:1.15'
+    compile 'com.android.support:support-v4:23.4.0'
 }
+
 
 
 
