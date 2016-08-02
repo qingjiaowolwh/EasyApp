@@ -141,11 +141,12 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<BaseVi
 
     public class OnRecyclerItemChildClickListener implements View.OnClickListener {
         public RecyclerView.ViewHolder mViewHolder;
+        public int position;
 
         @Override
         public void onClick(View v) {
             if (mChildClickListener != null)
-                mChildClickListener.onItemChildClick(v, mViewHolder.getLayoutPosition(), mDatas.get(mViewHolder.getLayoutPosition()));
+                mChildClickListener.onItemChildClick(v, position, mDatas.get(position));
         }
     }
 

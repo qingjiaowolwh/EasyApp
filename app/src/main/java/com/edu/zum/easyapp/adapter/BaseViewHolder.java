@@ -281,9 +281,10 @@ public class BaseViewHolder extends RecyclerView.ViewHolder {
         return this;
     }
 
-    public BaseViewHolder setOnClickListener(int viewId, BaseRecyclerAdapter.OnRecyclerItemChildClickListener listener) {
+    public BaseViewHolder setOnClickListener(int viewId, BaseRecyclerAdapter.OnRecyclerItemChildClickListener listener, int position) {
         View view = getView(viewId);
         listener.mViewHolder = this;
+        listener.position = position;
         view.setOnClickListener(listener);
         return this;
     }

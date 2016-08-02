@@ -30,6 +30,12 @@ public class PopUtil {
         this.mView = mView;
         width = mContext.getResources().getDisplayMetrics().widthPixels;
         height = mContext.getResources().getDisplayMetrics().heightPixels;
+        if (mContent == null)
+            mContent = LayoutInflater.from(mContext).inflate(resID, null);
+        mPopupWindow = new PopupWindow(mContent, width, height);
+        mPopupWindow.setFocusable(true);
+        mPopupWindow.setOutsideTouchable(true);
+        mPopupWindow.setBackgroundDrawable(new BitmapDrawable());
     }
 
     /**
@@ -43,6 +49,12 @@ public class PopUtil {
         this.mView = mView;
         width = mContext.getResources().getDisplayMetrics().widthPixels;
         height = mContext.getResources().getDisplayMetrics().heightPixels;
+        if (mContent == null)
+            mContent = LayoutInflater.from(mContext).inflate(resID, null);
+        mPopupWindow = new PopupWindow(mContent, width, height);
+        mPopupWindow.setFocusable(true);
+        mPopupWindow.setOutsideTouchable(true);
+//        mPopupWindow.setBackgroundDrawable(new BitmapDrawable());
     }
 
     public PopUtil setHeitht(int height) {
@@ -55,42 +67,40 @@ public class PopUtil {
         return this;
     }
 
+    public PopUtil setOnDismissListener(PopupWindow.OnDismissListener dismissListener) {
+        mPopupWindow.setOnDismissListener(dismissListener);
+        return this;
+    }
+
+    public void dismiss() {
+        if (mPopupWindow.isShowing())
+            mPopupWindow.dismiss();
+    }
+
+    public PopUtil setBackground(float alpha) {
+        setPopBackground(alpha);
+//      半透明  setPopBackground(0.7f);
+        return this;
+    }
+
 
     public void showDown() {
-        initPop();
         mPopupWindow.showAsDropDown(mView);
     }
 
     public void showCenter() {
-        initPop();
         mPopupWindow.showAtLocation(mView, Gravity.CENTER, 0, 0);
     }
 
     public void showBottom() {
-        initPop();
+
         mPopupWindow.showAtLocation(mView, Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 0);
 
     }
 
-    private void initPop() {
-        if (mContent == null)
-            mContent = LayoutInflater.from(mContext).inflate(resID, null);
-        setPopBackground(0.7f);
-        mPopupWindow = new PopupWindow(mContent, width, height);
-        mPopupWindow.setFocusable(true);
-        mPopupWindow.setOutsideTouchable(true);
-        mPopupWindow.setBackgroundDrawable(new BitmapDrawable());
-        mPopupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
-
-            @Override
-            public void onDismiss() {
-                setPopBackground(1.0f);
-            }
-        });
-    }
-
     /**
      * 设置添加屏幕的背景透明度
+     * setPopBackground(1.0f);
      *
      * @param bgAlpha
      */
