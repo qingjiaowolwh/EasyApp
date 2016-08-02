@@ -21,7 +21,7 @@ public class BookAdapter extends BaseRecyclerAdapter {
 
     @Override
     protected void onBindMyViewHolder(BaseViewHolder holder, int position) {
-        holder.setImageResource(R.id.book_iv, R.drawable.ic_launcher);
+        holder.setImageResource(R.id.book_iv, (Integer) mDatas.get(position));
         holder.setOnClickListener(R.id.book_iv, new OnRecyclerItemChildClickListener(),position);
     }
 }
