@@ -120,6 +120,11 @@ public abstract class XRecyclerViewFragment<T> extends BaseToolbarFragment{
 
     protected abstract BaseRecyclerAdapter setAdapter();
 
+    /**
+     * new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+     *
+     * @return
+     */
     protected RecyclerView.LayoutManager setLayoutManager() {
         return new LinearLayoutManager(mContext);
     }

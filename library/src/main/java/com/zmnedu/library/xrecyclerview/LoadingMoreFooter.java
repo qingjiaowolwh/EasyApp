@@ -1,6 +1,7 @@
 package com.zmnedu.library.xrecyclerview;
 
 import android.content.Context;
+import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.View;
@@ -37,13 +38,13 @@ public class LoadingMoreFooter extends LinearLayout {
 	}
     public void initView(){
         setGravity(Gravity.CENTER);
-        setLayoutParams(new ViewGroup.LayoutParams(
+        setLayoutParams(new RecyclerView.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
         progressCon = new SimpleViewSwitcher(getContext());
         progressCon.setLayoutParams(new ViewGroup.LayoutParams(
                 ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
 
-        AVLoadingIndicatorView progressView = new AVLoadingIndicatorView(this.getContext());
+        AVLoadingIndicatorView progressView = new  AVLoadingIndicatorView(this.getContext());
         progressView.setIndicatorColor(0xffB5B5B5);
         progressView.setIndicatorId(ProgressStyle.BallSpinFadeLoader);
         progressCon.setView(progressView);
@@ -63,7 +64,7 @@ public class LoadingMoreFooter extends LinearLayout {
         if(style == ProgressStyle.SysProgress){
             progressCon.setView(new ProgressBar(getContext(), null, android.R.attr.progressBarStyle));
         }else{
-            AVLoadingIndicatorView progressView = new AVLoadingIndicatorView(this.getContext());
+            AVLoadingIndicatorView progressView = new  AVLoadingIndicatorView(this.getContext());
             progressView.setIndicatorColor(0xffB5B5B5);
             progressView.setIndicatorId(style);
             progressCon.setView(progressView);
@@ -87,6 +88,5 @@ public class LoadingMoreFooter extends LinearLayout {
                 this.setVisibility(View.VISIBLE);
                 break;
         }
-
     }
 }

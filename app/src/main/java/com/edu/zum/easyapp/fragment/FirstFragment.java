@@ -8,12 +8,12 @@ import android.view.View;
 import com.edu.zum.easyapp.adapter.BaseRecyclerAdapter;
 import com.edu.zum.easyapp.adapter.FirstAdapter;
 import com.edu.zum.easyapp.api.RetrofitService;
+import com.edu.zum.easyapp.easemob.helpdeskdemo.Constant;
+import com.edu.zum.easyapp.easemob.helpdeskdemo.ui.LoginActivity;
 import com.edu.zum.easyapp.manager.DaoUtils;
 import com.edu.zum.easyapp.model.ResultModel;
 import com.ganhuo.entity.Ganhuo;
 
-import com.edu.zum.easyapp.easemob.helpdeskdemo.Constant;
-import com.edu.zum.easyapp.easemob.helpdeskdemo.ui.LoginActivity;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
@@ -36,8 +36,16 @@ public class FirstFragment extends XRecyclerViewFragment {
         adapter.setOnItemChildClickListener(new BaseRecyclerAdapter.OnItemChildClickListener() {
             @Override
             public void onItemChildClick(View view, int position, Object model) {
-                mContext.startActivity(new Intent(mContext, LoginActivity.class).putExtra(Constant.MESSAGE_TO_INTENT_EXTRA,
-                        Constant.MESSAGE_TO_PRE_SALES));
+                switch (position) {
+                    case 0:
+                        mContext.startActivity(new Intent(mContext, LoginActivity.class).putExtra(Constant.MESSAGE_TO_INTENT_EXTRA,
+                                Constant.MESSAGE_TO_PRE_SALES));
+                        break;
+
+                    default:
+                        break;
+                }
+
             }
         });
     }

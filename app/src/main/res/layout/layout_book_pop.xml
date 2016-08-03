@@ -1,14 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:gravity="center_horizontal">
-
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_horizontal">
 
     <ImageView
         android:id="@+id/book_iv"
-        android:layout_width="100dp"
-        android:layout_height="150dp"
-        android:src="@drawable/ic_launcher"/>
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:src="@drawable/book"/>
 
-</LinearLayout>
+    <ImageView
+        android:id="@+id/book_mark"
+        android:layout_width="wrap_content"
+        android:layout_height="70dp"
+        android:layout_alignStart="@+id/book_iv"
+        android:scaleType="fitXY"
+        android:src="@drawable/bookmark"
+        android:visibility="invisible"/>
+</RelativeLayout>
