@@ -47,8 +47,6 @@ public abstract class BaseActivity extends AppCompatActivity {
      */
     private View loading;
 
-    private boolean isBackFinish = false;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         StatusBarUtil.initSystemBar(this);
@@ -73,11 +71,15 @@ public abstract class BaseActivity extends AppCompatActivity {
         refWatcher.watch(this);
         ButterKnife.bind(this);
         init();
+        initView();
+        setUpView();
+        setUpData();
+    }
+
+    protected void initView(){
         initToolBar();
         setToolBar();
         initMultiStateView();
-        setUpView();
-        setUpData();
     }
 
     /**
@@ -101,16 +103,18 @@ public abstract class BaseActivity extends AppCompatActivity {
      * 做一些与View无关的操作
      */
     protected void init() {
-
         mContext = this;
-
         PushAgent.getInstance(mContext).onAppStart();
 //        注意: 此方法与统计分析sdk中统计日活的方法无关！请务必调用此方法！
-
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             getBundleExtras(extras);
         }
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
 
         RxBus.getInstance().toObserverable().subscribe(new Action1<Object>() {
 
@@ -256,6 +260,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         Intent intent = new Intent(this, clazz);
         startActivity(intent);
     }
+
 
     /**
      * 有参跳转activity

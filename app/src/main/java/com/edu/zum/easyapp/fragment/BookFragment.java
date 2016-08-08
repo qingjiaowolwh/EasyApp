@@ -23,6 +23,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BookFragment extends XRecyclerViewFragment {
+    private static final String BLURRED_IMG_PATH = "blurred_image.png";
+
     View content;
     ImageView bookIv;
     ImageView bookMark;
@@ -44,6 +46,7 @@ public class BookFragment extends XRecyclerViewFragment {
     @Override
     protected void setUpView() {
         super.setUpView();
+        mRecyclerView.setPullRefreshEnabled(false);
         List<BookBean> list = new ArrayList<>();
         BookBean book = null;
         for (int i = 0; i < resId.length; i++) {
@@ -66,6 +69,16 @@ public class BookFragment extends XRecyclerViewFragment {
             public void onItemChildClick(View view, int position, BookBean model) {
                 showBook(model, position);
                 AnimatorUtil.alfaDisappear(mRecyclerView).start();
+//                final File blurredImage = new File(getActivity().getFilesDir() + BLURRED_IMG_PATH);
+//                BitmapFactory.Options options = new BitmapFactory.Options();
+//                options.inSampleSize = 2;
+//                Bitmap image = BitmapFactory.decodeResource(getResources(), R.drawable.image, options);
+//                Bitmap image= ScreenUtils.snapShotWithoutStatusBar(getActivity());
+//                Bitmap newImg = Blur.fastblur(getActivity(), image, 25);
+////                ImageUtils.storeImage(newImg, blurredImage);
+////                Bitmap bmpBlurred = BitmapFactory.decodeFile(getActivity().getFilesDir() + BLURRED_IMG_PATH);
+////                mRecyclerView.setBackground(new BitmapDrawable(getResources(),newImg));
+//                content.setBackground(new BitmapDrawable(getResources(),newImg));
             }
         });
     }

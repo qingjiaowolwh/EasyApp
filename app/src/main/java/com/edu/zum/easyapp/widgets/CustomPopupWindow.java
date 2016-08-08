@@ -21,14 +21,12 @@ public class CustomPopupWindow extends PopupWindow {
     private boolean backDismiss = true;
 
     public CustomPopupWindow(Context context, View mContentView, View mView) {
-        super(context);
         this.mContentView = mContentView;
         this.mContext = context;
         this.mView = mView;
     }
 
     public CustomPopupWindow(Context context, int resID, View mView) {
-        super(context);
         this.resID = resID;
         this.mContext = context;
         this.mView = mView;
@@ -57,8 +55,10 @@ public class CustomPopupWindow extends PopupWindow {
     }
 
     public void setUpPop() {
-        setWidth(width = mContext.getResources().getDisplayMetrics().widthPixels);
-        setHeight(height = mContext.getResources().getDisplayMetrics().heightPixels);
+        if (width == 0)
+            setWidth(width = mContext.getResources().getDisplayMetrics().widthPixels);
+        if (height == 0)
+            setHeight(height = mContext.getResources().getDisplayMetrics().heightPixels);
         if (mContentView == null)
             mContentView = LayoutInflater.from(mContext).inflate(resID, null);
         setContentView(mContentView);
@@ -100,4 +100,5 @@ public class CustomPopupWindow extends PopupWindow {
         lp.alpha = bgAlpha; //0.0-1.0
         ((Activity) mContext).getWindow().setAttributes(lp);
     }
+
 }

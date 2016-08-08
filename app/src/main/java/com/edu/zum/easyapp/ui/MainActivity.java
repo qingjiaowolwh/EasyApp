@@ -17,6 +17,7 @@ import android.view.View;
 import com.edu.zum.easyapp.R;
 import com.edu.zum.easyapp.fragment.AnimatonFragment;
 import com.edu.zum.easyapp.fragment.BookFragment;
+import com.edu.zum.easyapp.fragment.FABRecyclerViewFragment;
 import com.edu.zum.easyapp.fragment.FirstFragment;
 import com.edu.zum.easyapp.fragment.ScreenshotFragment;
 import com.edu.zum.easyapp.fragment.SecondFragment;
@@ -153,7 +154,8 @@ public class MainActivity extends BaseActivity {
                     case R.id.navigation_item_four:
                         setTitle("Toolbar效果");
 //                        switchFragment(FABRecyclerViewFragment.class);
-                        startActivity(ContainerActivity.class);
+//                        startActivity(ContainerActivity.class);
+                        ContainerActivity.startActivity(mContext, FABRecyclerViewFragment.class,null);
                         break;
                     case R.id.navigation_item_sticky:
                         setTitle("RecyclerView悬浮效果");

@@ -1,28 +1,21 @@
 package com.edu.zum.easyapp.ui;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 
 import com.edu.zum.easyapp.R;
 import com.edu.zum.easyapp.fragment.BaseFragment;
-import com.edu.zum.easyapp.fragment.FABRecyclerViewFragment;
-import com.edu.zum.easyapp.utils.ViewUtils;
 
 public class ContainerActivity extends BaseActivity {
     public static final String EXTRA_FRAGMENT_CLASS_NAME = "class_name";
     public static final String EXTRA_FRAGMENT_TITLE = "title";
-    private FragmentManager mFragmentManager;
-    private Fragment mCurrentFragment;
+    private BaseFragment mCurrentFragment;
     private String className;
     private Class<?> fragmentC;
-
-    @Override
-    protected void init() {
-        super.init();
-        mFragmentManager = getSupportFragmentManager();
-    }
 
     @Override
     protected void getBundleExtras(@NonNull Bundle extras) {
@@ -46,18 +39,20 @@ public class ContainerActivity extends BaseActivity {
 
     @Override
     protected void setUpView() {
-        mCurrentFragment = ViewUtils.createFragment(FABRecyclerViewFragment.class);
-        mFragmentManager.beginTransaction().add(R.id.frame_content, mCurrentFragment).commit();
+        FragmentManager supportFragmentManager = getSupportFragmentManager();
+
+        FragmentTransaction transaction = supportFragmentManager.beginTransaction();
+        transaction.addToBackStack(fragmentC.getSimpleName());
+        transaction.replace(R.id.frame_content, mCurrentFragment);
+        transaction.setTransition(FragmentTransaction.TRANSIT_NONE);
+        transaction.commit();
     }
 
-    //切换Fragment
-    private void switchFragment(Class<?> clazz) {
-        Fragment to = ViewUtils.createFragment(clazz);
-        if (to.isAdded()) {
-            mFragmentManager.beginTransaction().hide(mCurrentFragment).show(to).commitAllowingStateLoss();
-        } else {
-            mFragmentManager.beginTransaction().hide(mCurrentFragment).add(R.id.frame_content, to).commitAllowingStateLoss();
-        }
-        mCurrentFragment = to;
+    public static void startActivity(Context context, Class<? extends BaseFragment> frgClass, Bundle extras) {
+        Intent i = new Intent(context, ContainerActivity.class);
+        i.putExtra(EXTRA_FRAGMENT_CLASS_NAME, frgClass.getName());
+        if (extras != null)
+            i.putExtras(extras);
+        context.startActivity(i);
     }
 }
