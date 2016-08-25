@@ -7,10 +7,12 @@ import com.edu.zum.easyapp.model.ResultModel;
 import com.ganhuo.entity.Ganhuo;
 
 import rx.Subscriber;
+import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
 public class ChildFragment extends XRecyclerViewFragment {
+    private Subscription subscription;
 
     @Override
     protected void setUpData() {
@@ -22,7 +24,7 @@ public class ChildFragment extends XRecyclerViewFragment {
     @Override
     protected void loadData() {
         super.loadData();
-        RetrofitService.getInstance().getGoods(getArguments().getString("type"), mCurrentPageIndex).subscribeOn(Schedulers.io())
+        subscription= RetrofitService.getInstance().getGoods(getArguments().getString("type"), mCurrentPageIndex).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread()).subscribe(new Subscriber<ResultModel>() {
             @Override
             public void onCompleted() {
@@ -56,5 +58,11 @@ public class ChildFragment extends XRecyclerViewFragment {
     @Override
     protected BaseRecyclerAdapter<Ganhuo> setAdapter() {
         return new testAdapter();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if (subscription!=null)subscription.unsubscribe();
     }
 }
