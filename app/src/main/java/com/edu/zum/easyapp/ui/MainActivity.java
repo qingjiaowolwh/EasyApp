@@ -22,6 +22,7 @@ import com.edu.zum.easyapp.fragment.FirstFragment;
 import com.edu.zum.easyapp.fragment.ScreenshotFragment;
 import com.edu.zum.easyapp.fragment.SecondFragment;
 import com.edu.zum.easyapp.fragment.StickyFragment;
+import com.edu.zum.easyapp.fragment.WordFragment;
 import com.edu.zum.easyapp.utils.ViewUtils;
 import com.orhanobut.logger.Logger;
 import com.umeng.message.PushAgent;
@@ -170,7 +171,7 @@ public class MainActivity extends BaseActivity {
                         break;
                     case R.id.navigation_item_about:
                         setTitle("单词");
-                        switchFragment(BookFragment.class);
+                        switchFragment(WordFragment.class);
 
                         break;
                     default:
