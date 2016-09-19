@@ -113,4 +113,18 @@ public class Ganhuo {
         this.who = who;
     }
 
+    @Override
+    public String toString() {
+        return "Ganhuo{" +
+                "id=" + id +
+                ", createdAt='" + createdAt + '\'' +
+                ", desc='" + desc + '\'' +
+                ", publishedAt='" + publishedAt + '\'' +
+                ", source='" + source + '\'' +
+                ", type='" + type + '\'' +
+                ", url='" + url + '\'' +
+                ", used=" + used +
+                ", who='" + who + '\'' +
+                '}';
+    }
 }
