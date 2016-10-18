@@ -29,11 +29,14 @@ public class JsonFragment extends BaseFragment {
     private Map<String, String> mMap = new HashMap<>();
     private List<String> mList = new ArrayList<>();
     private List<Ganhuo> ganhous = new ArrayList<>();
+    private String[] strings=new String[5];
 
     @Override
     protected void setUpData() {
         super.setUpData();
         for (int i = 0; i < 5; i++) {
+            strings[i]=i+"";
+
             Ganhuo ganhuo = new Ganhuo();
             ganhuo.setCreatedAt("123233");
             ganhuo.setDesc("你猜啊");
@@ -55,6 +58,8 @@ public class JsonFragment extends BaseFragment {
             e.printStackTrace();
         }
         try {
+            json.put("strings[]", java.util.Arrays.toString(strings));
+            json.put("stringstostring", strings.toString());
             json.put("mMap", mMap);
             json.put("mMaptoString", gson.toJson(mMap.toString()));
             json.put("mList", mList);

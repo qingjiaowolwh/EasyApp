@@ -46,7 +46,7 @@ public class FirstAdapter extends BaseRecyclerAdapter<Ganhuo> {
 ////        Picasso.with(mContext).load(mDatas.get(position).getUrl()).into(myHolder.image);
 //        Glide.with(mContext).load(mDatas.get(position).getUrl()).centerCrop().into(myHolder.image);
         holder.setText(R.id.text, mDatas.get(position).getDesc());
-        holder.setOnClickListener(R.id.image, new OnRecyclerItemChildClickListener());
+        holder.setOnClickListener(R.id.image, new OnRecyclerItemChildClickListener(),position);
         Glide.with(mContext).load(mDatas.get(position).getUrl()).centerCrop().into((ImageView) holder.getView(R.id.image));
 
 

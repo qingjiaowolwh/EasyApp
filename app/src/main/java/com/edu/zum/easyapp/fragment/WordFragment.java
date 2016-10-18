@@ -30,6 +30,10 @@ public class WordFragment extends BaseFragment {
     @Override
     protected void setUpView() {
         super.setUpView();
+
+
+    }
+    public void WordClickableSpan(){
         mWordview.setMovementMethod(LinkMovementMethod.getInstance());
         mWordview.setTextSize(22);
         mWordview.setText(new SpannableString(DEMO_WORDS), TextView.BufferType.SPANNABLE);
@@ -49,6 +53,5 @@ public class WordFragment extends BaseFragment {
             start = end + 1;
             end = localBreakIterator.next();
         }
-
     }
 }

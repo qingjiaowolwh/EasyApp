@@ -12,6 +12,8 @@ import com.edu.zum.easyapp.easemob.helpdeskdemo.Constant;
 import com.edu.zum.easyapp.easemob.helpdeskdemo.ui.LoginActivity;
 import com.edu.zum.easyapp.manager.DaoUtils;
 import com.edu.zum.easyapp.model.ResultModel;
+import com.edu.zum.easyapp.ui.ContainerActivity;
+import com.edu.zum.easyapp.ui.HybridAvtivity;
 import com.ganhuo.entity.Ganhuo;
 
 import rx.Subscriber;
@@ -27,20 +29,25 @@ public class FirstFragment extends XRecyclerViewFragment {
         super.setUpData();
         //获取数据
         daoUtils = new DaoUtils(mContext);
-//        if (!daoUtils.searchGanhuo().isEmpty()) {
-//            adapter.append(daoUtils.searchGanhuo());
-//
-//        }
-//        mContext.startActivity(new Intent(mContext, LoginActivity.class).putExtra(Constant.MESSAGE_TO_INTENT_EXTRA,
-//                Constant.MESSAGE_TO_PRE_SALES));
+        if (!daoUtils.searchGanhuo().isEmpty()) {
+            mCurrentAction=ACTION_REFRESH;
+            adapter.append(daoUtils.searchGanhuo());
+        }
         mRecyclerView.setRefreshing(true);
         adapter.setOnItemChildClickListener(new BaseRecyclerAdapter.OnItemChildClickListener() {
             @Override
             public void onItemChildClick(View view, int position, Object model) {
                 switch (position) {
                     case 0:
+                        //环信客服
                         mContext.startActivity(new Intent(mContext, LoginActivity.class).putExtra(Constant.MESSAGE_TO_INTENT_EXTRA,
                                 Constant.MESSAGE_TO_PRE_SALES));
+                        break;
+                    case 1:
+                        HybridAvtivity.actionStart(mContext);
+                        break;
+                    case 2:
+                        ContainerActivity.startActivity(mContext,WordFragment.class,null);
                         break;
 
                     default:
@@ -86,7 +93,8 @@ public class FirstFragment extends XRecyclerViewFragment {
             if (!resultModel.getResults().isEmpty()) {
                 if (mCurrentAction == ACTION_REFRESH)
                     adapter.replace(resultModel.getResults());
-//                daoUtils.insertGanhuo(resultModel.getResults());
+                daoUtils.deleteGanhuo();
+                daoUtils.insertGanhuo(resultModel.getResults());
                 if (mCurrentAction == ACTION_LOAD_MORE)
                     adapter.append(resultModel.getResults());
             }

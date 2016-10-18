@@ -44,5 +44,11 @@ public class DaoUtils {
         return ganhuos;
     }
 
+    public boolean deleteGanhuo() {
+        boolean flag = false;
+         ganhuodao.deleteAll();
+        return flag;
+    }
+
 
 }

@@ -7,7 +7,7 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:windowBackground">@android:color/white</item>
-        <item name="drawerArrowStyle">@style/AppTheme.MyDrawerArrowStyle</item>
+        <item name="drawerArrowStyle">@style/DrawerArrowStyleWhite</item>
         <item name="actionOverflowMenuStyle">@style/PopupMenu.MyMenuStyle</item>
         <!-- 这样toolbar上滑出去标题跟状态栏不会重叠，而是被覆盖。将style(v21)中的<item name="statusBarColor">@color/colorPrimaryDark</item>-->
 
@@ -25,7 +25,7 @@
         <!--  <item name="android:dropDownHorizontalOffset">0dp</item>-->
     </style>
     <!--自定义 navigation drarwer 的样式-->
-    <style name="AppTheme.MyDrawerArrowStyle" parent="Widget.AppCompat.DrawerArrowToggle">
+    <style name="DrawerArrowStyleWhite" parent="Widget.AppCompat.DrawerArrowToggle">
         <item name="spinBars">true</item>
         <item name="color">#FFFFFF</item>
     </style>

@@ -18,14 +18,14 @@ public class ContainerActivity extends BaseActivity {
     private Class<?> fragmentC;
 
     @Override
-    protected void getBundleExtras(@NonNull Bundle extras) {
-        super.getBundleExtras(extras);
-        className = extras.getString(EXTRA_FRAGMENT_CLASS_NAME);
+    protected void getBundleExtras(@NonNull Intent intent) {
+        super.getBundleExtras(intent);
+        className = intent.getStringExtra(EXTRA_FRAGMENT_CLASS_NAME);
         try {
             if (className != null) {
                 fragmentC = Class.forName(className);
                 mCurrentFragment = (BaseFragment) fragmentC.newInstance();
-                mCurrentFragment.setArguments(extras);
+                mCurrentFragment.setArguments(intent.getExtras());
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -42,7 +42,8 @@ public class ContainerActivity extends BaseActivity {
         FragmentManager supportFragmentManager = getSupportFragmentManager();
 
         FragmentTransaction transaction = supportFragmentManager.beginTransaction();
-        transaction.addToBackStack(fragmentC.getSimpleName());
+        //加入回退栈
+//        transaction.addToBackStack(fragmentC.getSimpleName());
         transaction.replace(R.id.frame_content, mCurrentFragment);
         transaction.setTransition(FragmentTransaction.TRANSIT_NONE);
         transaction.commit();

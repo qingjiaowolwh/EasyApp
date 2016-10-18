@@ -27,6 +27,7 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <activity android:name=".ui.HybridAvtivity"/>
         <activity
             android:name=".ui.ContainerActivity"
             android:label="@string/title_activity_change_fragment"

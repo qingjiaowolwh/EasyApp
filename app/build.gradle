@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 23
-    buildToolsVersion "23.0.2"
+    buildToolsVersion "23.0.1"
 
     defaultConfig {
         applicationId "com.edu.zum.easyapp"
@@ -46,6 +46,7 @@ dependencies {
     compile 'com.squareup.leakcanary:leakcanary-android-no-op:1.4-beta2'
     compile 'com.orhanobut:logger:1.15'
     compile 'com.android.support:support-v4:23.4.0'
+    compile 'com.github.chrisbanes.photoview:library:1.2.4'
 }
 
 

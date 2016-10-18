@@ -67,8 +67,8 @@ public abstract class BaseActivity extends AppCompatActivity {
             Window window = getWindow();
             window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         }
-        RefWatcher refWatcher = MyApplication.getRefWatcher(this);
-        refWatcher.watch(this);
+//        RefWatcher refWatcher = MyApplication.getRefWatcher(this);
+//        refWatcher.watch(this);
         ButterKnife.bind(this);
         init();
         initView();
@@ -106,9 +106,9 @@ public abstract class BaseActivity extends AppCompatActivity {
         mContext = this;
         PushAgent.getInstance(mContext).onAppStart();
 //        注意: 此方法与统计分析sdk中统计日活的方法无关！请务必调用此方法！
-        Bundle extras = getIntent().getExtras();
-        if (extras != null) {
-            getBundleExtras(extras);
+        Intent intent = getIntent();
+        if (intent != null) {
+            getBundleExtras(intent);
         }
     }
 
@@ -132,7 +132,7 @@ public abstract class BaseActivity extends AppCompatActivity {
      *
      * @param extras
      */
-    protected void getBundleExtras(@NonNull Bundle extras) {
+    protected void getBundleExtras(@NonNull Intent intent) {
     }
 
     /**
