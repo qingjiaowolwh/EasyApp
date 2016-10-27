@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="../build/react.js"></script>
+    <script src="../build/react-dom.js"></script>
+    <script src="../build/browser.min.js"></script>
+</head>
+<body>
+<div id="example"></div>
+<script type="text/babel">
+    var List=React.createClass({
+        //1.创建阶段
+        getDefaultProps:function(){
+            console.log("getDefaultProps");
+            return {};
+        },
+        //2.实例化阶段
+        getInitialState:function(){
+            console.log("getInitialState");
+            return {};
+        },
+        componentWillMount:function(){
+            //在render之前调用此方法
+            //业务逻辑的处理都应该放在这里，如对state的操作等
+            console.log("componentWillMount");
+        },
+        render:function(){
+            //渲染并返回一个虚拟DOM
+            console.log("render");
+            return (<div>hello <strong>{this.props.name}</strong></div>);
+        },
+        componentDidMount:function() {
+            //该方法发生在render之后，在该方法中ReactJS会使用render方法返回的虚拟DOM对象来创建真是的DOM结构
+            console.log("componentDidMount");
+        },
+         //3.更新阶段
+        componentWillReceiveProps:function() {
+            //该方法发生在this.props被修改或父组件调用setProps()方法后
+            console.log("componentWillReceiveProps");
+        },
+    shouldComponentUpdate:function(){
+        //是否需要更新
+        console.log("shouldComponentUpdate");
+        return true;
+    },
+    componentWillUpdate:function(){
+        //将要更新
+        console.log("componentwillUpdate");
+    },
+    componentDidUpdate:function() {
+        //更新完毕
+        console.log("componentDidUpdate");
+    },
+    componentWillUnMount:function() {
+        //销毁时被调用
+        console.log("componentWillUnMount");
+    }
+    });
+    ReactDOM.render(<List name="ReactJS"/>,document.getElementById("example"));
+</script>
+
+</body>
+</html>

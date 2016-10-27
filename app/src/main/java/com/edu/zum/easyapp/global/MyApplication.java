@@ -7,7 +7,8 @@ import com.orhanobut.logger.Logger;
 import com.squareup.leakcanary.LeakCanary;
 import com.squareup.leakcanary.RefWatcher;
 
-import com.edu.zum.easyapp.easemob.helpdeskdemo.DemoHelper;
+import easemob.helpdeskdemo.DemoHelper;
+
 //import android.provider.Settings;
 //
 //import com.edu.zum.easyapp.utils.ImageLoaderHelper;

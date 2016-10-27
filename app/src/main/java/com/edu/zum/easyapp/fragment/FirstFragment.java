@@ -8,14 +8,14 @@ import android.view.View;
 import com.edu.zum.easyapp.adapter.BaseRecyclerAdapter;
 import com.edu.zum.easyapp.adapter.FirstAdapter;
 import com.edu.zum.easyapp.api.RetrofitService;
-import com.edu.zum.easyapp.easemob.helpdeskdemo.Constant;
-import com.edu.zum.easyapp.easemob.helpdeskdemo.ui.LoginActivity;
 import com.edu.zum.easyapp.manager.DaoUtils;
 import com.edu.zum.easyapp.model.ResultModel;
 import com.edu.zum.easyapp.ui.ContainerActivity;
 import com.edu.zum.easyapp.ui.HybridAvtivity;
 import com.ganhuo.entity.Ganhuo;
 
+import easemob.helpdeskdemo.Constant;
+import easemob.helpdeskdemo.ui.LoginActivity;
 import rx.Subscriber;
 import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;

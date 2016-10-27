@@ -135,6 +135,12 @@
         <!-- 模糊 -->
     </style>
 
+    <style name="myRatingBar" parent="@android:style/Widget.RatingBar">
+        <item name="android:progressDrawable">@drawable/em_ratingbar_drawable</item>
+        <item name="android:minHeight">52dip</item>
+        <item name="android:maxHeight">52dip</item>
+    </style>
+
     <style name="HeadScale" parent="android:Theme.Dialog">
         <item name="android:windowAnimationStyle">@style/AnimHead</item>
         <item name="android:windowFrame">@null</item>
