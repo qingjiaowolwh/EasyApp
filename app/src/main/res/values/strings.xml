@@ -20,4 +20,14 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string-array name="planets_array">
+        <item >我是程序员1</item>
+        <item >我是程序员2</item>
+        <item >我是程序员3</item>
+        <item >我是程序员4</item>
+        <item >我是程序员5</item>
+        <item >我是程序员6</item>
+        <item >我是程序员7</item>
+    </string-array>
 </resources>

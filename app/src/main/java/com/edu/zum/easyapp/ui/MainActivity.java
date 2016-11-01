@@ -164,7 +164,7 @@ public class MainActivity extends BaseActivity {
                         switchFragment(ScreenshotFragment.class);
                         break;
                     case R.id.navigation_item_about:
-                        setTitle("单词");
+                        setTitle("JSON");
                         switchFragment(JsonFragment.class);
 
                         break;

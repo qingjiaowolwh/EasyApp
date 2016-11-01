@@ -16,13 +16,11 @@ import android.view.WindowManager;
 import android.widget.TextView;
 
 import com.edu.zum.easyapp.R;
-import com.edu.zum.easyapp.global.MyApplication;
 import com.edu.zum.easyapp.rxbus.RxBus;
 import com.edu.zum.easyapp.rxbus.RxBusEvent;
 import com.edu.zum.easyapp.utils.NetworkUtil;
 import com.edu.zum.easyapp.utils.StatusBarUtil;
 import com.edu.zum.easyapp.utils.ToastUtil;
-import com.squareup.leakcanary.RefWatcher;
 import com.umeng.analytics.MobclickAgent;
 import com.umeng.message.PushAgent;
 import com.zmnedu.library.widgets.MultiStateView;
@@ -129,8 +127,6 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     /**
      * 获取上个activity的传值
-     *
-     * @param extras
      */
     protected void getBundleExtras(@NonNull Intent intent) {
     }

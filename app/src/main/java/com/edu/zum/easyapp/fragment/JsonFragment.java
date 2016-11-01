@@ -1,5 +1,8 @@
 package com.edu.zum.easyapp.fragment;
 
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
+
 import com.edu.zum.easyapp.R;
 import com.ganhuo.entity.Ganhuo;
 import com.google.gson.Gson;
@@ -30,6 +33,18 @@ public class JsonFragment extends BaseFragment {
     private List<String> mList = new ArrayList<>();
     private List<Ganhuo> ganhous = new ArrayList<>();
     private String[] strings=new String[5];
+    private Spinner spinner;
+
+    @Override
+    protected void setUpView() {
+        super.setUpView();
+        spinner= (Spinner) getContentView().findViewById(R.id.spinner);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(mContext,
+                R.array.planets_array, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+        spinner.setSelection(0);
+    }
 
     @Override
     protected void setUpData() {
