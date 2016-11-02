@@ -130,7 +130,7 @@
 ####[PermissionsDispatcher](https://github.com/hotchemi/PermissionsDispatcher) 用注解方式调用6.0权限的工具库
 ####[leakcanary](https://github.com/square/leakcanary) 一个Android和Java内存泄漏检测库。
 ![](https://github.com/square/leakcanary/raw/master/assets/screenshot.png)
-####[RxLifecycle](https://github.com/trello/RxLifecycle) 一个Android和Java内存泄漏检测库。
+####[RxLifecycle](https://github.com/trello/RxLifecycle) Lifecycle handling APIs for Android apps using RxJava
 ####[logger](https://github.com/orhanobut/logger) 一个Android和Java内存泄漏检测库。
 ![](https://github.com/orhanobut/logger/raw/master/images/description.png)
 
