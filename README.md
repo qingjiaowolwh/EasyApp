@@ -116,6 +116,8 @@
 ####[Context-Menu.Android](https://github.com/Yalantis/Context-Menu.Android)You can easily add awesome animated context menu to your app. 
 ![](https://camo.githubusercontent.com/46c15734b552ce3afefa7efd1518909046b4677e/68747470733a2f2f6431337961637572716a676172612e636c6f756466726f6e742e6e65742f75736572732f3132353035362f73637265656e73686f74732f313738353237342f39396d696c65732d70726f66696c652d6c696768745f312d312d342e676966)
 ####[Awesome-MaterialDesign](https://github.com/lightSky/Awesome-MaterialDesign)Collection of material design libs and res.（MaterialDesign效果）
+####[awesome-android-ui](https://github.com/wasabeef/awesome-android-ui)A curated list of awesome Android UI/UX libraries
+
 
 ####[ShortcutBadger](https://github.com/leolin310148/ShortcutBadger)MaterialDesign效果
 ![](https://camo.githubusercontent.com/618b29ccb20fb2a69fe54d5cf43e3c9c81601052/68747470733a2f2f7261772e6769746875622e636f6d2f6c656f6c696e3331303134382f53686f72746375744261646765722f6d61737465722f73637265656e73686f74732f73735f73616d73756e672e706e67)
@@ -138,11 +140,18 @@
 -------
 ####[free-programming-books](https://github.com/vhf/free-programming-books)
 ####[free-programming-books-zh](https://github.com/vhf/free-programming-books/blob/master/free-programming-books-zh.md)
-免费的编程书籍
 ####[gold-miner](https://github.com/xitu/gold-miner) 掘金翻译计划，翻译掘金上优质的英文文章
 ####[LearningNotes](https://github.com/GeniusVJR/LearningNotes) 
 ####[android-iconify](https://github.com/JoanZapata/android-iconify) 
 ####[README.md书写教程](http://blog.csdn.net/kaitiren/article/details/38513715) 
+####[oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) shell(目前还不懂~哈哈)
+####[awesome](https://github.com/sindresorhus/awesome) GitHub 上有各种 awesome 系列，简单来说就是这个系列搜罗整理了 GitHub 上各领域的资源大汇总，比如有 awesome-android, awesome-ios, awesome-java, awesome-python 等等。
+####[github-cheat-sheet](https://github.com/tiimgreen/github-cheat-sheet/) GitHub 的使用有各种技巧
+####[AndroidInterview-Q-A](https://github.com/JackyAndroid/AndroidInterview-Q-A/blob/master/README-CN.md)国内一线互联网公司内部面试题库
+####[Android_Data](https://github.com/Freelander/Android_Data) 国内各种学习 Android 的资料(非常全)
+####[github-cheat-sheet](https://github.com/tiimgreen/github-cheat-sheet/) GitHub 的使用有各种技巧
+
+
 
 
 
