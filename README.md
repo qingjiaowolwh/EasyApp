@@ -56,12 +56,13 @@
 <a href="https://github.com/lygttpod/SuperTextView/blob/master/type5.png" target="_blank"><img src="https://camo.githubusercontent.com/46a0c2773275d5a5acedc76a2b38ac1ec105d47a/68747470733a2f2f64726976652e676f6f676c652e636f6d2f75633f6578706f72743d646f776e6c6f61642669643d304278504f5f556553377753634e6d526d5758417a526d52774e484d" width="270" height="480" alt="效果图" align="center" style="max-width:100%;"></a>
 </div>
 ####[Maillineview](https://github.com/xiaohaibin/Maillineview) 类似京东收件地址信封分割线
-![](https://github.com/xiaohaibin/Maillineview/raw/master/sceenshots/002.png)
+![](https://github.com/xiaohaibin/Maillineview/raw/master/sceenshots/
+.png)
 ####[MaterialShowcaseView](https://github.com/deano2390/MaterialShowcaseView) 类似新手引导效果  精美绝伦
 ![](https://camo.githubusercontent.com/b72d79c013305ad20ef510af50abc6b12b721999/687474703a2f2f692e696d6775722e636f6d2f51494d59524a682e706e67)
 ![](https://camo.githubusercontent.com/0d29b7fb974a5e018a4d627c91d349fbbeadd57b/687474703a2f2f692e696d6775722e636f6d2f724648454e677a2e676966)
 ####[AndroidFillableLoaders](https://github.com/JorgeCastilloPrz/AndroidFillableLoaders) SVG图片实现  进度家在视图 可自定义Transform
-![](https://github.com/xiaohaibin/Maillineview/raw/master/sceenshots/002.png)
+![](https://github.com/JorgeCastilloPrz/AndroidFillableLoaders/raw/master/art/demoPlain.gif)
 ####[TextSurface](https://github.com/elevenetc/TextSurface) 添加了一些动画用于展示消息的TextView
 ![](https://github.com/elevenetc/TextSurface/raw/master/docs/demo.gif)
 ####[FlipViewPager.Draco](https://github.com/Yalantis/FlipViewPager.Draco) 
@@ -85,7 +86,8 @@
 
 ####[UltimateRecyclerView](https://github.com/cymcsg/UltimateRecyclerView)A RecyclerView(advanced and flexible version of ListView in Android) with refreshing,loading more,animation and many other features.（实现下拉刷新上拉加载的RecyclerView）
 ####[AndroidDynamicLoader](https://github.com/mmin18/AndroidDynamicLoader)A plugin system that runs like a browser, but instead of load web pages, it load apk plugins which runs natively on Android system.
-<p><a href="https://camo.githubusercontent.com/57d650214e8ecb3d27af36d14ed1ace0122b0c49/68747470733a2f2f7261772e6769746875622e636f6d2f6d6d696e31382f416e64726f696444796e616d69634c6f616465722f6d61737465722f48656c6c6f576f726c6444656d6f2e706e67" target="_blank"><img src="https://camo.githubusercontent.com/57d650214e8ecb3d27af36d14ed1ace0122b0c49/68747470733a2f2f7261772e6769746875622e636f6d2f6d6d696e31382f416e64726f696444796e616d69634c6f616465722f6d61737465722f48656c6c6f576f726c6444656d6f2e706e67" alt="HelloWorldDemo" data-canonical-src="https://raw.github.com/mmin18/AndroidDynamicLoader/master/HelloWorldDemo.png" style="max-width:100%;"></a></p>
+<p><a href="https://camo.githubusercontent.com/57d65
+14e8ecb3d27af36d14ed1ace0122b0c49/68747470733a2f2f7261772e6769746875622e636f6d2f6d6d696e31382f416e64726f696444796e616d69634c6f616465722f6d61737465722f48656c6c6f576f726c6444656d6f2e706e67" target="_blank"><img src="https://camo.githubusercontent.com/57d650214e8ecb3d27af36d14ed1ace0122b0c49/68747470733a2f2f7261772e6769746875622e636f6d2f6d6d696e31382f416e64726f696444796e616d69634c6f616465722f6d61737465722f48656c6c6f576f726c6444656d6f2e706e67" alt="HelloWorldDemo" data-canonical-src="https://raw.github.com/mmin18/AndroidDynamicLoader/master/HelloWorldDemo.png" style="max-width:100%;"></a></p>
 ####[XRecyclerView](https://github.com/jianghejie/XRecyclerView)a RecyclerView that implements pullrefresh and loadingmore featrues.you can use it like a standard RecyclerView
 ![](https://github.com/jianghejie/XRecyclerView/raw/master/art/demo.gif)
 ####[AndroidSwipeLayout](https://github.com/daimajia/AndroidSwipeLayout)The Most Powerful Swipe Layout!
