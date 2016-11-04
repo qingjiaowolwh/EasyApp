@@ -11,7 +11,6 @@ import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 
 import com.edu.zum.easyapp.R;
 import com.edu.zum.easyapp.fragment.AnimatonFragment;
@@ -101,14 +100,11 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void setNavigationAction() {
-        getToolbar().setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        getToolbar().setNavigationOnClickListener(v->{
                 if (drawerLayout.isDrawerOpen(GravityCompat.START))
                     drawerLayout.closeDrawer(GravityCompat.START);
                 else
                     drawerLayout.openDrawer(GravityCompat.START);
-            }
         });
     }
 

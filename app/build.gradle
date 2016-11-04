@@ -1,8 +1,9 @@
 apply plugin: 'com.android.application'
+apply plugin: 'me.tatarka.retrolambda'
 
 android {
     compileSdkVersion 23
-    buildToolsVersion "23.0.1"
+    buildToolsVersion "24.0.2"
 
     defaultConfig {
         applicationId "com.edu.zum.easyapp"
@@ -21,6 +22,11 @@ android {
         main {
             java.srcDirs = ['src/main/java', 'src/main/java-gen']
         }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 }
 
@@ -47,9 +53,3 @@ dependencies {
     compile 'com.github.chrisbanes.photoview:library:1.2.4'
     compile project(':easeui')
 }
-
-
-
-
-
-
