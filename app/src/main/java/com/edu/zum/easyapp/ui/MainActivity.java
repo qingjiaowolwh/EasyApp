@@ -121,11 +121,7 @@ public class MainActivity extends BaseActivity {
 
 
     private void setNavigationViewItemClickListener() {
-        mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-
-
-            @Override
-            public boolean onNavigationItemSelected(MenuItem item) {
+        mNavigationView.setNavigationItemSelectedListener(item->{
                 if (null != mPreMenuItem) {
                     mPreMenuItem.setChecked(false);
                 }
@@ -171,7 +167,6 @@ public class MainActivity extends BaseActivity {
                 drawerLayout.closeDrawer(Gravity.LEFT);
                 mPreMenuItem = item;
                 return false;
-            }
         });
     }
 

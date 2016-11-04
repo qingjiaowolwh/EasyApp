@@ -105,12 +105,7 @@ public abstract class XRecyclerViewFragment<T> extends BaseToolbarFragment{
         Log.e(TAG,e.getMessage());
         if (mCurrentAction == ACTION_REFRESH) {
             setStateError();
-            retry(new Runnable() {
-                @Override
-                public void run() {
-                    loadData();
-                }
-            });
+            retry(()-> loadData());
         }
     }
 

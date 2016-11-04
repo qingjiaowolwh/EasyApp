@@ -30,6 +30,7 @@ public class WordFragment extends BaseFragment {
     @Override
     protected void setUpView() {
         super.setUpView();
+        WordClickableSpan();
 
 
     }

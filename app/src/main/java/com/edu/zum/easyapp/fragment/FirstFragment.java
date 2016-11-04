@@ -3,7 +3,6 @@ package com.edu.zum.easyapp.fragment;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
-import android.view.View;
 
 import com.edu.zum.easyapp.adapter.BaseRecyclerAdapter;
 import com.edu.zum.easyapp.adapter.FirstAdapter;
@@ -34,9 +33,7 @@ public class FirstFragment extends XRecyclerViewFragment {
             adapter.append(daoUtils.searchGanhuo());
         }
         mRecyclerView.setRefreshing(true);
-        adapter.setOnItemChildClickListener(new BaseRecyclerAdapter.OnItemChildClickListener() {
-            @Override
-            public void onItemChildClick(View view, int position, Object model) {
+        adapter.setOnItemChildClickListener((view,position,o)-> {
                 switch (position) {
                     case 0:
                         //环信客服
@@ -53,8 +50,6 @@ public class FirstFragment extends XRecyclerViewFragment {
                     default:
                         break;
                 }
-
-            }
         });
     }
 
