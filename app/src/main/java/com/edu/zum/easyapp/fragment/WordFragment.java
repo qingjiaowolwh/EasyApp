@@ -3,6 +3,7 @@ package com.edu.zum.easyapp.fragment;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.method.LinkMovementMethod;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.edu.zum.easyapp.R;
@@ -16,11 +17,17 @@ import butterknife.Bind;
 public class WordFragment extends BaseFragment {
     @Bind(R.id.wordview)
     TextView mWordview;
-    private final String DEMO_WORDS = "From tomorrow on , I will be a happy man ; " +
+    private final String DEMO_WORDS = "From tomorrow on , I'll be a happy man ; " +
             "Grooming , chopping , and traveling all over the world . " +
             "From tomorrow on , I will care foodstuff and vegetable . Living in a house towards the sea , " +
-            "with spring blossoms . \n\nFrom tomorrow on , write to each of my dear ones , \n\nTelling them of my happiness . ";
+            "with spring blossoms . From tomorrow on , write to each of my dear ones , Telling them of my happiness . ";
 
+    private final String DEMO_WORDS_show = "From tomorrow on , I'll be a happy man ; " +
+            "Grooming , chopping , and traveling all over the world . " +
+            "From tomorrow on, I will care foodstuff and vegetable . Living in a house towards the sea , " +
+            "with spring blossoms. From tomorrow on, write to each of my dear ones , Telling them of my happiness . ";
+    @Bind(R.id.showwordview)
+    EditText mShowwordview;
 
     @Override
     protected int setLayoutResourceID() {
@@ -31,9 +38,13 @@ public class WordFragment extends BaseFragment {
     protected void setUpView() {
         super.setUpView();
         WordClickableSpan();
-
-
+        ShowWord();
     }
+
+    private void ShowWord() {
+        mShowwordview.setText(DEMO_WORDS_show);
+    }
+
     public void WordClickableSpan(){
         mWordview.setMovementMethod(LinkMovementMethod.getInstance());
         mWordview.setTextSize(22);

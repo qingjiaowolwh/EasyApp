@@ -28,21 +28,13 @@ public class ScreenshotFragment extends BaseFragment {
         shotImg = (ImageView) view.findViewById(R.id.shotImg);
         share = (Button) view.findViewById(R.id.share);
         save = (Button) view.findViewById(R.id.save);
-        share.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ToastUtil.show("分享");
-            }
+        share.setOnClickListener(v -> {
+            ToastUtil.show("分享");
         });
-        save.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ToastUtil.show("保存");
-            }
+        save.setOnClickListener(v -> {
+            ToastUtil.show("保存");
         });
-        $(R.id.shot).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        $(R.id.shot).setOnClickListener(v -> {
 //                bitmap = ScreenUtils.snapShotWithStatusBar(getActivity());
 //                if (bitmap != null) {
 //                    shotImg.setImageBitmap(bitmap);
@@ -54,8 +46,6 @@ public class ScreenshotFragment extends BaseFragment {
 //                    animSet.setDuration(500);
 //                    animSet.start();
 //                }
-
-            }
         });
     }
 
