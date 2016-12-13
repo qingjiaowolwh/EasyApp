@@ -1,7 +1,6 @@
 package com.edu.zum.easyapp.fragment;
 
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.view.animation.AnimationUtils;
 
 import com.edu.zum.easyapp.R;
@@ -18,22 +17,17 @@ public abstract class BaseToolbarFragment extends BaseFragment {
         mToolbar = (Toolbar) getContentView().findViewById(R.id.toolbar);
         if (mToolbar != null) {
             mToolbar.setNavigationIcon(R.drawable.fanhui);
-            mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    getActivity().finish();
-                }
-            });
+            mToolbar.setNavigationOnClickListener((v)->getActivity().finish());
         }
     }
 
     /**
-     * flaf初始为true
      *
      * @param dy
      * @param flag
      * @return
      */
+    public boolean flag=true;
     public boolean hidOrShowToolbar(int dy, boolean flag) {
         // Is scrolling up
         if (dy > 10) {

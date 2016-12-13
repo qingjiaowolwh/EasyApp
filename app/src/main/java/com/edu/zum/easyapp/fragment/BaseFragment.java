@@ -12,10 +12,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.edu.zum.easyapp.R;
-import com.edu.zum.easyapp.global.MyApplication;
 import com.edu.zum.easyapp.utils.NetworkUtil;
 import com.edu.zum.easyapp.utils.ToastUtil;
-import com.squareup.leakcanary.RefWatcher;
 import com.zmnedu.library.widgets.MultiStateView;
 
 import butterknife.ButterKnife;
@@ -162,10 +160,4 @@ public abstract class BaseFragment extends Fragment {
         mProgressDialog.setMessage("加载中...");
     }
 
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        RefWatcher refWatcher = MyApplication.getRefWatcher(getActivity());
-        refWatcher.watch(this);
-    }
 }

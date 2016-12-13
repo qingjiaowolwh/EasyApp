@@ -14,13 +14,12 @@ import android.view.MenuItem;
 
 import com.edu.zum.easyapp.R;
 import com.edu.zum.easyapp.fragment.AnimatonFragment;
-import com.edu.zum.easyapp.fragment.BookFragment;
 import com.edu.zum.easyapp.fragment.FABRecyclerViewFragment;
 import com.edu.zum.easyapp.fragment.FirstFragment;
-import com.edu.zum.easyapp.fragment.JsonFragment;
-import com.edu.zum.easyapp.fragment.ScreenshotFragment;
+import com.edu.zum.easyapp.fragment.PrintAndroidCircleProgressbarFragment;
 import com.edu.zum.easyapp.fragment.SecondFragment;
 import com.edu.zum.easyapp.fragment.StickyFragment;
+import com.edu.zum.easyapp.fragment.WordFragment;
 import com.edu.zum.easyapp.utils.ViewUtils;
 import com.umeng.message.PushAgent;
 import com.umeng.message.UmengRegistrar;
@@ -131,33 +130,29 @@ public class MainActivity extends BaseActivity {
                         switchFragment(FirstFragment.class);
                         break;
                     case R.id.navigation_item_second:
-                        setTitle("次页1");
+                        setTitle("TabLayout");
                         switchFragment(SecondFragment.class);
                         break;
                     case R.id.navigation_item_third:
-                        setTitle("属性动画");
+                        setTitle("动画");
                         switchFragment(AnimatonFragment.class);
                         break;
                     case R.id.navigation_item_four:
                         setTitle("Toolbar效果");
-//                        switchFragment(FABRecyclerViewFragment.class);
-//                        startActivity(ContainerActivity.class);
                         ContainerActivity.startActivity(mContext, FABRecyclerViewFragment.class,null);
                         break;
                     case R.id.navigation_item_sticky:
                         setTitle("RecyclerView悬浮效果");
-//                        switchFragment(FABRecyclerViewFragment.class);
                         switchFragment(StickyFragment.class);
                         break;
 
                     case R.id.navigation_item_switch_theme:
-//                        switchFragment(StickyFragment.class);
-                        setTitle("截图");
-                        switchFragment(ScreenshotFragment.class);
+                        setTitle("自定义View");
+                        switchFragment(PrintAndroidCircleProgressbarFragment.class);
                         break;
                     case R.id.navigation_item_about:
-                        setTitle("JSON");
-                        switchFragment(JsonFragment.class);
+                        setTitle("单词点击");
+                        switchFragment(WordFragment.class);
 
                         break;
                     default:
@@ -176,22 +171,11 @@ public class MainActivity extends BaseActivity {
         return true;
     }
 
-//    @Override
-//    public boolean onMenuItemClick(MenuItem item) {
-//        switch (item.getItemId()){
-//            case R.id.action_settings:
-//                ToastUtil.show("action_settings");
-//                return true;
-//        }
-//        return false;
-//    }
-
-
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (mCurrentFragment instanceof BookFragment) {
-            return ((BookFragment) mCurrentFragment).onKeyDown(keyCode, event);
-        }
+//        if (mCurrentFragment instanceof FirstFragment) {
+//            return false;
+//        }
         return super.onKeyDown(keyCode, event);
     }
 }

@@ -85,6 +85,7 @@ public class JsonFragment extends BaseFragment {
             jsonArray.put(2);jsonArray.put(3);
             json.put("jsonarray",jsonArray);
             System.out.println("ganhuos" + array1);
+
         } catch (JSONException e) {
             e.printStackTrace();
         }
