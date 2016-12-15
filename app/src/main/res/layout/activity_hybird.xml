@@ -4,7 +4,7 @@
               android:layout_width="match_parent"
               android:fitsSystemWindows="true"
               android:layout_height="match_parent">
-    <include layout="@layout/layout_titlebar"/>
+    <include layout="@layout/layout_toolbar"/>
 
     <com.zmnedu.library.widgets.MultiStateView
         android:id="@+id/multiStateView"
