@@ -26,7 +26,7 @@ public class JsonFragment extends BaseFragment {
 
     @Override
     protected int setLayoutResourceID() {
-        return R.layout.layout_book_item;
+        return 0;
     }
 
     private Map<String, String> mMap = new HashMap<>();
@@ -38,7 +38,7 @@ public class JsonFragment extends BaseFragment {
     @Override
     protected void setUpView() {
         super.setUpView();
-        spinner= (Spinner) getContentView().findViewById(R.id.spinner);
+//        spinner= (Spinner) getContentView().findViewById(R.id.spinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(mContext,
                 R.array.planets_array, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
