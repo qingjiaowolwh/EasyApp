@@ -1,5 +1,6 @@
 package com.edu.zum.easyapp.fragment;
 
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 
@@ -12,6 +13,8 @@ import com.edu.zum.easyapp.ui.ContainerActivity;
 import com.edu.zum.easyapp.ui.ListActivity;
 import com.ganhuo.entity.Ganhuo;
 
+import easemob.helpdeskdemo.Constant;
+import easemob.helpdeskdemo.ui.LoginActivity;
 import rx.Subscriber;
 import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
@@ -34,8 +37,8 @@ public class FirstFragment extends XRecyclerViewFragment {
                 switch (position) {
                     case 0:
                         //环信客服
-//                        mContext.startActivity(new Intent(mContext, LoginActivity.class).putExtra(Constant.MESSAGE_TO_INTENT_EXTRA,
-//                                Constant.MESSAGE_TO_PRE_SALES));
+                        mContext.startActivity(new Intent(mContext, LoginActivity.class).putExtra(Constant.MESSAGE_TO_INTENT_EXTRA,
+                                Constant.MESSAGE_TO_PRE_SALES));
                         break;
                     case 1:
                         ContainerActivity.startActivity(mContext,WordFragment.class,null);
