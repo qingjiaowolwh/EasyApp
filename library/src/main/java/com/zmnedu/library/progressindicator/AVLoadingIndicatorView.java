@@ -42,6 +42,9 @@ import com.zmnedu.library.progressindicator.indicator.SemiCircleSpinIndicator;
 import com.zmnedu.library.progressindicator.indicator.SquareSpinIndicator;
 import com.zmnedu.library.progressindicator.indicator.TriangleSkewSpinIndicator;
 
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+
 
 /**
  * Created by Jack on 2015/10/15
@@ -139,6 +142,7 @@ public class AVLoadingIndicatorView extends View{
                     BallGridBeat,
                     SemiCircleSpin
             })
+    @Retention(RetentionPolicy.SOURCE)
     public @interface Indicator{}
 
     //Sizes (with defaults in DP)
