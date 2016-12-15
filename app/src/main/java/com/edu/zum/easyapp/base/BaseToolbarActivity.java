@@ -17,11 +17,11 @@ public abstract class BaseToolbarActivity extends BaseActivity {
         initToolBar();
     }
 
-    public void setTitle_middle(String title) {
+    public void setTitle(String title) {
         this.title_middle.setText(title);
     }
 
-    public void setTitle_middle(int title) {
+    public void setTitle(int title) {
         this.title_middle.setText(title);
     }
 
