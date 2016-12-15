@@ -163,12 +163,6 @@ public class MultiStateView extends FrameLayout {
         return super.addViewInLayout(child, index, params, preventRequestLayout);
     }
 
-    /**
-     * Returns the {@link View} associated with the {@link com.kennyc.view.MultiStateView.ViewState}
-     *
-     * @param state The {@link com.kennyc.view.MultiStateView.ViewState} with to return the view for
-     * @return The {@link View} associated with the {@link com.kennyc.view.MultiStateView.ViewState}, null if no view is present
-     */
     @Nullable
     public View getView(@ViewState int state) {
         switch (state) {
@@ -189,21 +183,27 @@ public class MultiStateView extends FrameLayout {
         }
     }
 
-    /**
-     * Returns the current {@link com.kennyc.view.MultiStateView.ViewState}
-     *
-     * @return
-     */
     @ViewState
     public int getViewState() {
         return mViewState;
     }
 
-    /**
-     * Sets the current {@link com.kennyc.view.MultiStateView.ViewState}
-     *
-     * @param state The {@link com.kennyc.view.MultiStateView.ViewState} to set {@link MultiStateView} to
-     */
+    public void setStateLoading() {
+        this.setViewState(MultiStateView.VIEW_STATE_LOADING);
+    }
+
+    public void setStateError() {
+        this.setViewState(MultiStateView.VIEW_STATE_ERROR);
+    }
+
+    public void setStateEmpty() {
+        this.setViewState(MultiStateView.VIEW_STATE_EMPTY);
+    }
+
+    public void setStateContent() {
+        this.setViewState(MultiStateView.VIEW_STATE_CONTENT);
+    }
+
     public void setViewState(@ViewState int state) {
         if (state != mViewState) {
             mViewState = state;
@@ -211,9 +211,6 @@ public class MultiStateView extends FrameLayout {
         }
     }
 
-    /**
-     * Shows the {@link View} based on the {@link com.kennyc.view.MultiStateView.ViewState}
-     */
     private void setView() {
         switch (mViewState) {
             case VIEW_STATE_LOADING:
@@ -278,13 +275,6 @@ public class MultiStateView extends FrameLayout {
         return view != mLoadingView && view != mErrorView && view != mEmptyView;
     }
 
-    /**
-     * Sets the view for the given view state
-     *
-     * @param view          The {@link View} to use
-     * @param state         The {@link com.kennyc.view.MultiStateView.ViewState}to set
-     * @param switchToState If the {@link com.kennyc.view.MultiStateView.ViewState} should be switched to
-     */
     public void setViewForState(View view, @ViewState int state, boolean switchToState) {
         switch (state) {
             case VIEW_STATE_LOADING:
@@ -315,35 +305,16 @@ public class MultiStateView extends FrameLayout {
         if (switchToState) setViewState(state);
     }
 
-    /**
-     * Sets the {@link View} for the given {@link com.kennyc.view.MultiStateView.ViewState}
-     *
-     * @param view  The {@link View} to use
-     * @param state The {@link com.kennyc.view.MultiStateView.ViewState} to set
-     */
     public void setViewForState(View view, @ViewState int state) {
         setViewForState(view, state, false);
     }
 
-    /**
-     * Sets the {@link View} for the given {@link com.kennyc.view.MultiStateView.ViewState}
-     *
-     * @param layoutRes     Layout resource id
-     * @param state         The {@link com.kennyc.view.MultiStateView.ViewState} to set
-     * @param switchToState If the {@link com.kennyc.view.MultiStateView.ViewState} should be switched to
-     */
     public void setViewForState(@LayoutRes int layoutRes, @ViewState int state, boolean switchToState) {
         if (mInflater == null) mInflater = LayoutInflater.from(getContext());
         View view = mInflater.inflate(layoutRes, this, false);
         setViewForState(view, state, switchToState);
     }
 
-    /**
-     * Sets the {@link View} for the given {@link com.kennyc.view.MultiStateView.ViewState}
-     *
-     * @param layoutRes Layout resource id
-     * @param state     The {@link View} state to set
-     */
     public void setViewForState(@LayoutRes int layoutRes, @ViewState int state) {
         setViewForState(layoutRes, state, false);
     }

@@ -6,13 +6,13 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import com.edu.zum.easyapp.R;
+import com.edu.zum.easyapp.base.BaseToolbarActivity;
 import com.edu.zum.easyapp.fragment.AnimatonFragment;
 import com.edu.zum.easyapp.fragment.FABRecyclerViewFragment;
 import com.edu.zum.easyapp.fragment.FirstFragment;
@@ -24,41 +24,33 @@ import com.edu.zum.easyapp.utils.ViewUtils;
 import com.umeng.message.PushAgent;
 import com.umeng.message.UmengRegistrar;
 
-import butterknife.Bind;
-
-public class MainActivity extends BaseActivity {
+public class MainActivity extends BaseToolbarActivity {
     private FragmentManager mFragmentManager;
     private Fragment mCurrentFragment;
-
+    private DrawerLayout drawerLayout;
+    private NavigationView mNavigationView;
     private MenuItem mPreMenuItem;
-    @Bind(R.id.drawerlayout)
-    DrawerLayout drawerLayout;
 
-
-    @Bind(R.id.navigation_view)
-    NavigationView mNavigationView;
-
-    @Override
-    protected void setToolBar() {
-        super.setToolBar();
-        getToolbar().setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
-
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                return false;
-            }
-        });
-    }
+//    @Override
+//    protected void setToolBar() {
+//        super.setToolBar();
+//        getToolbar().setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+//
+//            @Override
+//            public boolean onMenuItemClick(MenuItem item) {
+//                return false;
+//            }
+//        });
+//    }
+private void initView() {
+    drawerLayout=findViewById_(R.id.drawerlayout);
+    mNavigationView=findViewById_(R.id.navigation_view);
+}
 
     @Override
     protected void setUpView() {
-//        String hello = "hello";
-//        Logger.d(hello);
-//        Logger.e(hello);
-//        Logger.w("fd");
-//        Logger.v(hello);
-//        Logger.wtf(hello);
-//        setDrawerLayout();
+        super.setUpView();
+        initView();
         mCurrentFragment = ViewUtils.createFragment(FirstFragment.class);
         mFragmentManager.beginTransaction().add(R.id.frame_content, mCurrentFragment).commit();
         setTitle("首页");

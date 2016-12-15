@@ -58,7 +58,6 @@ dependencies {
     compile 'com.readystatesoftware.systembartint:systembartint:1.0.4'
     compile 'org.greenrobot:greendao:3.0.0'
     compile 'com.squareup.leakcanary:leakcanary-android-no-op:1.4-beta2'
-    compile 'com.orhanobut:logger:1.15'
     compile 'com.android.support:support-v4:23.4.0'
     compile 'com.github.chrisbanes.photoview:library:1.2.4'
     compile project(':easeui')

@@ -45,7 +45,6 @@ public class FirstFragment extends XRecyclerViewFragment {
                         break;
                     default:
                         ListActivity.startActivity(mContext);
-
                         break;
                 }
         });

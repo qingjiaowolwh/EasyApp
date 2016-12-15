@@ -3,11 +3,11 @@ package com.edu.zum.easyapp.ui;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 
 import com.edu.zum.easyapp.R;
+import com.edu.zum.easyapp.base.BaseActivity;
 import com.edu.zum.easyapp.fragment.BaseFragment;
 
 public class ContainerActivity extends BaseActivity {
@@ -17,9 +17,11 @@ public class ContainerActivity extends BaseActivity {
     private String className;
     private Class<?> fragmentC;
 
+
     @Override
-    protected void getBundleExtras(@NonNull Intent intent) {
-        super.getBundleExtras(intent);
+    protected void init() {
+        super.init();
+        Intent intent=getIntent();
         className = intent.getStringExtra(EXTRA_FRAGMENT_CLASS_NAME);
         try {
             if (className != null) {
