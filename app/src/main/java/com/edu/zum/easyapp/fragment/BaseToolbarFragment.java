@@ -7,6 +7,7 @@ import com.edu.zum.easyapp.R;
 
 /**
  * Created by lwh on 2016/6/29.
+ * sync
  */
 public abstract class BaseToolbarFragment extends BaseFragment {
     private Toolbar mToolbar;
