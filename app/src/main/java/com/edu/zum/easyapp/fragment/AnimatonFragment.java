@@ -1,13 +1,16 @@
 package com.edu.zum.easyapp.fragment;
 
+import android.animation.Animator;
 import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
+import android.animation.ValueAnimator;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Handler;
 import android.os.Message;
 import android.view.View;
+import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.edu.zum.easyapp.R;
@@ -47,13 +50,8 @@ public class AnimatonFragment extends BaseFragment {
 
     @Bind(R.id.ptr_loading1)
     ImageView prLoading1;
-    @Bind(R.id.anim_gift_img)
-    //送礼物
-            ImageView animGiftImg;
-    @Bind(R.id.anim_gift_count)
-    TextView animGiftCount;
-    @Bind(R.id.anim_gift_ll)
-    LinearLayout animGiftLl;
+    @Bind(R.id.anim_gift_icon)
+    ImageView animGiftIcon;
 
 
     @Override
@@ -78,6 +76,9 @@ public class AnimatonFragment extends BaseFragment {
             case R.id.anim_pk_right:
                 break;
             case R.id.start:
+                translateYanim();
+
+
                 animationDrawable.start();
                 AnimatorUtil.translationPK(animPkLeft, mContext.getResources().getDimension(R.dimen.margin_200dp), animPkRight, mContext.getResources().getDimension(R.dimen.margin_right)).start();
 //                mythread = new Thread(new MyThread());
@@ -99,6 +100,70 @@ public class AnimatonFragment extends BaseFragment {
             default:
                 break;
         }
+    }
+
+    private void scaleYanim() {
+        ObjectAnimator animator = ObjectAnimator.ofFloat(animGiftIcon, "scaleY", 1.0f, 0.9f, 1.0f);
+        animator.setDuration(2000);//动画时间
+//                animator.setInterpolator(new BounceInterpolator());//动画插值  动画结束的时候弹起
+        animator.setRepeatCount(ValueAnimator.INFINITE);//设置动画重复次数
+        animator.setRepeatMode(ValueAnimator.RESTART);//动画重复模式
+        animator.start();
+    }
+    private void translateYanim() {
+        long time=2000;
+        ObjectAnimator animatorToTop = ObjectAnimator.ofFloat(animGiftIcon, "translationY", 100f,0.0f);
+        animatorToTop.setDuration(time);
+        animatorToTop.setInterpolator(new AccelerateDecelerateInterpolator());
+        animatorToTop.start();
+
+        ObjectAnimator animatorToBottom = ObjectAnimator.ofFloat(animGiftIcon, "translationY", 0.0f,100f);
+        animatorToBottom.setDuration(time);
+        animatorToBottom.setInterpolator(new AccelerateDecelerateInterpolator());
+        animatorToTop.addListener(new Animator.AnimatorListener() {
+            @Override
+            public void onAnimationStart(Animator animation) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                animatorToBottom.start();
+            }
+
+            @Override
+            public void onAnimationCancel(Animator animation) {
+
+            }
+
+            @Override
+            public void onAnimationRepeat(Animator animation) {
+
+            }
+        });
+
+
+        animatorToBottom.addListener(new Animator.AnimatorListener() {
+            @Override
+            public void onAnimationStart(Animator animation) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                animatorToTop.start();
+            }
+
+            @Override
+            public void onAnimationCancel(Animator animation) {
+
+            }
+
+            @Override
+            public void onAnimationRepeat(Animator animation) {
+
+            }
+        });
     }
 
 
