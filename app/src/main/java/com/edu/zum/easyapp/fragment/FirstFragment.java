@@ -7,7 +7,6 @@ import android.support.v7.widget.StaggeredGridLayoutManager;
 import com.edu.zum.easyapp.adapter.BaseRecyclerAdapter;
 import com.edu.zum.easyapp.adapter.FirstAdapter;
 import com.edu.zum.easyapp.api.RetrofitService;
-import com.edu.zum.easyapp.manager.DaoUtils;
 import com.edu.zum.easyapp.model.ResultModel;
 import com.edu.zum.easyapp.ui.ContainerActivity;
 import com.edu.zum.easyapp.ui.ListActivity;
@@ -21,17 +20,17 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
 public class FirstFragment extends XRecyclerViewFragment {
-    private DaoUtils daoUtils;
+//    private DaoUtils daoUtils;
 
     @Override
     protected void setUpData() {
         super.setUpData();
         //获取数据
-        daoUtils = new DaoUtils(mContext);
-        if (!daoUtils.searchGanhuo().isEmpty()) {
-            mCurrentAction=ACTION_REFRESH;
-            adapter.append(daoUtils.searchGanhuo());
-        }
+//        daoUtils = new DaoUtils(mContext);
+//        if (!daoUtils.searchGanhuo().isEmpty()) {
+//            mCurrentAction=ACTION_REFRESH;
+//            adapter.append(daoUtils.searchGanhuo());
+//        }
         mRecyclerView.setRefreshing(true);
         adapter.setOnItemChildClickListener((view,position,o)-> {
                 switch (position) {
@@ -85,8 +84,8 @@ public class FirstFragment extends XRecyclerViewFragment {
             if (!resultModel.getResults().isEmpty()) {
                 if (mCurrentAction == ACTION_REFRESH)
                     adapter.replace(resultModel.getResults());
-                daoUtils.deleteGanhuo();
-                daoUtils.insertGanhuo(resultModel.getResults());
+//                daoUtils.deleteGanhuo();
+//                daoUtils.insertGanhuo(resultModel.getResults());
                 if (mCurrentAction == ACTION_LOAD_MORE)
                     adapter.append(resultModel.getResults());
             }

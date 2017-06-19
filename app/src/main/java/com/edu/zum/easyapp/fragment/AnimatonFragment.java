@@ -9,6 +9,8 @@ import android.os.Handler;
 import android.os.Message;
 import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
+import android.view.animation.Animation;
+import android.view.animation.ScaleAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -76,7 +78,7 @@ public class AnimatonFragment extends BaseFragment {
             case R.id.anim_pk_right:
                 break;
             case R.id.start:
-                translateYanim();
+                scaleYanimation();
 
 
                 animationDrawable.start();
@@ -102,10 +104,55 @@ public class AnimatonFragment extends BaseFragment {
         }
     }
 
+    private void scaleYanimation() {
+        Animation animationToTop =new ScaleAnimation(1.0f, 1.0f, 1.0f, 1.1f,
+                Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 1.0f);
+        animationToTop.setDuration(1000);
+
+        Animation animationToBottom =new ScaleAnimation(1.0f, 1.0f, 1.1f, 1.0f,
+                Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 1.0f);
+        animationToBottom.setDuration(1000);
+
+        animationToTop.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                animGiftIcon.startAnimation(animationToBottom);
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+
+            }
+        });
+        animationToBottom.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                animGiftIcon.startAnimation(animationToTop);
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+
+            }
+        });
+        animGiftIcon.startAnimation(animationToTop);
+
+    }
+
     private void scaleYanim() {
-        ObjectAnimator animator = ObjectAnimator.ofFloat(animGiftIcon, "scaleY", 1.0f, 0.9f, 1.0f);
+        ObjectAnimator animator = ObjectAnimator.ofFloat(animGiftIcon, "scaleY", 1.0f, 0.95f, 1.0f);
         animator.setDuration(2000);//动画时间
-//                animator.setInterpolator(new BounceInterpolator());//动画插值  动画结束的时候弹起
+        animator.setInterpolator(new AccelerateDecelerateInterpolator());
         animator.setRepeatCount(ValueAnimator.INFINITE);//设置动画重复次数
         animator.setRepeatMode(ValueAnimator.RESTART);//动画重复模式
         animator.start();

@@ -4,6 +4,7 @@ import android.content.Context;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.zip.ZipInputStream;
 
@@ -11,7 +12,13 @@ import java.util.zip.ZipInputStream;
  * Created by lwh on 2016/7/11.
  */
 public class AssetsToSDCard {
-    public static void unZip(Context mContext, String assetName, String outputDirectory, boolean isReWrite) {
+    /**
+     * @param mContext
+     * @param fileName  压缩文件名字
+     * @param outputDirectory
+     * @param isReWrite 是否覆盖
+     */
+    public static void unZip(Context mContext, String fileName, String outputDirectory, boolean isReWrite) {
         // 创建解压目标目录
         try {
             File file = new File(outputDirectory);
@@ -20,7 +27,7 @@ public class AssetsToSDCard {
                 file.mkdirs();
             }
             // 打开压缩文件
-            InputStream inputStream = mContext.getAssets().open(assetName);
+            InputStream inputStream = mContext.getAssets().open(fileName);
             ZipInputStream zipInputStream = new ZipInputStream(inputStream);
             // 读取一个进入点
             java.util.zip.ZipEntry zipEntry = zipInputStream.getNextEntry();
@@ -60,4 +67,29 @@ public class AssetsToSDCard {
 
 
     }
+
+    public static void fileToSDCard(Context mContext, String fileName, String outputDirectory, boolean isReWrite){
+        try {
+            File file = new File(outputDirectory);
+            if (!file.exists()) {
+                file.mkdirs();
+            }
+            file = new File(outputDirectory + File.separator + fileName);
+            if (isReWrite || !file.exists()) {
+                InputStream inputStream=mContext.getAssets().open(fileName);
+                FileOutputStream fileOutputStream=new FileOutputStream(file);
+                byte[] buffer=new byte[1024*1024];
+                int count=0;
+                    while ((count=inputStream.read(buffer))>0){
+                        fileOutputStream.write(buffer,0,count);
+                    }
+                inputStream.close();
+                fileOutputStream.close();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
 }

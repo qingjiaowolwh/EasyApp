@@ -146,7 +146,9 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<BaseVi
 
     protected abstract int setItemLayoutResourceID();
 
-    protected abstract BaseViewHolder setViewHolder(View v, int viewType, ViewGroup parent);
+    protected  BaseViewHolder setViewHolder(View v, int viewType, ViewGroup parent){
+        return new BaseViewHolder(v);
+    }
 
     protected abstract void onBindMyViewHolder(BaseViewHolder holder, int position);
 

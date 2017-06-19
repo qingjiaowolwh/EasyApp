@@ -38,6 +38,33 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
+    signingConfigs { //gradlew assembleRelease
+        release {
+            storeFile file("C:\\Users\\123\\AndroidStudioProjects\\EasyApplication\\easyapp.jks")  //.keystore  .jks  路径
+            keyAlias "easy_app" //别名
+            keyPassword "123456"
+            storePassword "123456"
+        }
+    }
+
+    buildTypes {
+        debug {//测试下的配置
+//            minifyEnabled false
+//            shrinkResources false
+//            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+        release {//正式的配置
+            minifyEnabled true  // false表示不混淆，true表示混淆
+//            shrinkResources true //移除无用的resource文件
+//            zipAlignEnabled true//优化的目的是使包内未压缩的数据能够有序的排列，从而减少应用程序运行时的内存消耗.
+            //如果用eclipse里面的proguard.cfg，直接替换 proguard-rules.pro 即可
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+    }
+    buildToolsVersion '25.0.0'
 }
 
 dependencies {
@@ -61,4 +88,5 @@ dependencies {
     compile 'com.android.support:support-v4:23.4.0'
     compile 'com.github.chrisbanes.photoview:library:1.2.4'
     compile project(':easeui')
+    androidTestCompile 'org.testng:testng:6.9.6'
 }

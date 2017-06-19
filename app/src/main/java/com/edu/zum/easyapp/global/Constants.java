@@ -13,7 +13,7 @@ public class Constants {
 
     // 外部存储设备的根路径
     public static final String ExternalStorageRootPath = EnvironmentStateUtils.getExternalStorageDirectory().getPath();
-    public static final String BasePath = ExternalStorageRootPath + "/app_name/";
+    public static final String BasePath = ExternalStorageRootPath + "/easy/";
     // 文件存放路径
     public static final String FileCachePath = BasePath + "FileCache/";
     // 保存图片

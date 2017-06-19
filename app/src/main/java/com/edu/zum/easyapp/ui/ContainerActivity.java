@@ -7,10 +7,10 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 
 import com.edu.zum.easyapp.R;
-import com.edu.zum.easyapp.base.BaseActivity;
+import com.edu.zum.easyapp.base.BaseToolbarActivity;
 import com.edu.zum.easyapp.fragment.BaseFragment;
 
-public class ContainerActivity extends BaseActivity {
+public class ContainerActivity extends BaseToolbarActivity {
     public static final String EXTRA_FRAGMENT_CLASS_NAME = "class_name";
     public static final String EXTRA_FRAGMENT_TITLE = "title";
     private BaseFragment mCurrentFragment;
@@ -32,6 +32,7 @@ public class ContainerActivity extends BaseActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
     }
 
     @Override

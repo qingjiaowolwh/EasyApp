@@ -9,6 +9,8 @@
     android:orientation="vertical"
     tools:context=".ui.ContainerActivity">
 
+    <include layout="@layout/layout_toolbar"/>
+
 
     <include layout="@layout/content_change_fragment"/>
 

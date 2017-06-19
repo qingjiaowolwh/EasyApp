@@ -19,7 +19,8 @@ import com.edu.zum.easyapp.fragment.FirstFragment;
 import com.edu.zum.easyapp.fragment.PrintAndroidCircleProgressbarFragment;
 import com.edu.zum.easyapp.fragment.SecondFragment;
 import com.edu.zum.easyapp.fragment.StickyFragment;
-import com.edu.zum.easyapp.fragment.WordFragment;
+import com.edu.zum.easyapp.global.Constants;
+import com.edu.zum.easyapp.utils.AssetsToSDCard;
 import com.edu.zum.easyapp.utils.ViewUtils;
 import com.umeng.message.PushAgent;
 import com.umeng.message.UmengRegistrar;
@@ -142,10 +143,9 @@ private void initView() {
                         setTitle("自定义View");
                         switchFragment(PrintAndroidCircleProgressbarFragment.class);
                         break;
-                    case R.id.navigation_item_about:
-                        setTitle("单词点击");
-                        switchFragment(WordFragment.class);
-
+                    case R.id.navigation_item_list:
+//                        ContainerActivity.startActivity(mContext, DecorViewFragment.class,null);
+                        AssetsToSDCard.fileToSDCard(this,"ttt.ppt", Constants.FileCachePath,true);
                         break;
                     default:
                         break;

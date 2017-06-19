@@ -6,11 +6,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-/**
- * Created by _SOLID
- * Date:2016/3/30
- * Time:19:37
- */
 public class ViewUtils {
 
     private static Map<String, BaseFragment> fragmentList = new HashMap<>();

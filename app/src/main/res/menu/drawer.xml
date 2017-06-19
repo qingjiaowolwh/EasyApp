@@ -34,9 +34,9 @@
                     android:title="主题换肤"/>
 
                 <item
-                    android:id="@+id/navigation_item_about"
+                    android:id="@+id/navigation_item_list"
                     android:icon="@drawable/ic_drawer_home"
-                    android:title="关于"/>
+                    android:title="列表界面"/>
             </menu>
         </item>
     </group>
