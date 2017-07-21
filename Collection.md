@@ -141,7 +141,7 @@
 
 其他
 -------
-[free-programming-books](https://github.com/vhf/free-programming-books)
+[free-programming-books](https://github.com/vhf/free-programming-books)<br/>
 [free-programming-books-zh](https://github.com/vhf/free-programming-books/blob/master/free-programming-books-zh.md)
 ####[gold-miner](https://github.com/xitu/gold-miner) 掘金翻译计划，翻译掘金上优质的英文文章
 ####[LearningNotes](https://github.com/GeniusVJR/LearningNotes) 
