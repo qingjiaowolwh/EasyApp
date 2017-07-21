@@ -142,16 +142,16 @@
 其他
 -------
 [free-programming-books](https://github.com/vhf/free-programming-books)<br/>
-[free-programming-books-zh](https://github.com/vhf/free-programming-books/blob/master/free-programming-books-zh.md)
-####[gold-miner](https://github.com/xitu/gold-miner) 掘金翻译计划，翻译掘金上优质的英文文章
-####[LearningNotes](https://github.com/GeniusVJR/LearningNotes) 
-####[android-iconify](https://github.com/JoanZapata/android-iconify) 
-####[README.md书写教程](http://blog.csdn.net/kaitiren/article/details/38513715) 
-####[oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) shell(目前还不懂~哈哈)
-####[awesome](https://github.com/sindresorhus/awesome) GitHub 上有各种 awesome 系列，简单来说就是这个系列搜罗整理了 GitHub 上各领域的资源大汇总，比如有 awesome-android, awesome-ios, awesome-java, awesome-python 等等。
-####[github-cheat-sheet](https://github.com/tiimgreen/github-cheat-sheet/) GitHub 的使用有各种技巧
-####[AndroidInterview-Q-A](https://github.com/JackyAndroid/AndroidInterview-Q-A/blob/master/README-CN.md)国内一线互联网公司内部面试题库
-####[Android_Data](https://github.com/Freelander/Android_Data) 国内各种学习 Android 的资料(非常全)
-####[github-cheat-sheet](https://github.com/tiimgreen/github-cheat-sheet/) GitHub 的使用有各种技巧
+[free-programming-books-zh](https://github.com/vhf/free-programming-books/blob/master/free-programming-books-zh.md)<br/>
+[gold-miner](https://github.com/xitu/gold-miner) 掘金翻译计划，翻译掘金上优质的英文文章<br/>
+[LearningNotes](https://github.com/GeniusVJR/LearningNotes) <br/>
+[android-iconify](https://github.com/JoanZapata/android-iconify) <br/>
+[README.md书写教程](http://blog.csdn.net/kaitiren/article/details/38513715) <br/>
+[oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) shell(目前还不懂~哈哈)<br/>
+[awesome](https://github.com/sindresorhus/awesome) GitHub 上有各种 awesome 系列，简单来说就是这个系列搜罗整理了 GitHub 上各领域的资源大汇总，比如有 awesome-android, awesome-ios, awesome-java, awesome-python 等等。<br/>
+[github-cheat-sheet](https://github.com/tiimgreen/github-cheat-sheet/) GitHub 的使用有各种技巧<br/>
+[AndroidInterview-Q-A](https://github.com/JackyAndroid/AndroidInterview-Q-A/blob/master/README-CN.md)国内一线互联网公司内部面试题库<br/>
+[Android_Data](https://github.com/Freelander/Android_Data) 国内各种学习 Android 的资料(非常全)<br/>
+[github-cheat-sheet](https://github.com/tiimgreen/github-cheat-sheet/) GitHub 的使用有各种技巧<br/>
 
 
