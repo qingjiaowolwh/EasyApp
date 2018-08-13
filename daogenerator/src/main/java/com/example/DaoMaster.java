@@ -38,4 +38,46 @@ public class DaoMaster {
 //        entity1.addIdProperty();
 
     }
+
+    private static void addWarningBean(Schema schema) {
+        //一对一关系
+        Entity warningBean = schema.addEntity("WarningBean");
+        warningBean.addStringProperty("pushTime");
+        warningBean.addStringProperty("content");
+        warningBean.addStringProperty("policeNo");
+
+        Entity warningInfo = schema.addEntity("WarningInfo");
+        warningInfo.addStringProperty("warningNo");
+        warningInfo.addStringProperty("warningTime");
+        warningInfo.addStringProperty("basePhoto");
+        warningInfo.addStringProperty("capturePhoto");
+        warningInfo.addStringProperty("captureScenePhoto");
+        warningInfo.addStringProperty("name");
+        warningInfo.addStringProperty("baseName");
+        warningInfo.addStringProperty("score");
+        warningInfo.addStringProperty("remark");
+        warningInfo.addStringProperty("captureSuccess");
+        warningInfo.addStringProperty("creareTime");
+
+        Entity baseInfo = schema.addEntity("BaseInfo");
+        baseInfo.addStringProperty("id").primaryKey();
+        baseInfo.addStringProperty("name");
+        baseInfo.addStringProperty("nation");
+        baseInfo.addStringProperty("gender");
+        baseInfo.addStringProperty("nativePlace");
+        baseInfo.addStringProperty("credentialsNo");
+        baseInfo.addStringProperty("address");
+        baseInfo.addStringProperty("baseLib");
+        baseInfo.addStringProperty("baseCase");
+        baseInfo.addStringProperty("remark");
+        baseInfo.addStringProperty("baseImage");
+
+        Property id=warningBean.addStringProperty("id").primaryKey().getProperty();
+        warningBean.addToOne(warningInfo,id);
+
+        Property warningId=warningInfo.addStringProperty("warningId").primaryKey().getProperty();
+        warningInfo.addToOne(baseInfo,warningId);
+
+
+    }
 }

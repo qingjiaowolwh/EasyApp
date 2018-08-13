@@ -30,6 +30,12 @@
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
+
+                <!--下面所设置的质需要和html端对调-->
+                <!--在data里设置了 scheme和host，则该Activity可以接收和处理类似于 "sharetest://data/XXX"的链接-->
+                <data
+                    android:host="data"
+                    android:scheme="sharetest" />
             </intent-filter>
         </activity>
         <activity
@@ -37,6 +43,7 @@
             android:label="@string/title_activity_change_fragment"
             android:theme="@style/AppTheme">
         </activity>
+
 
         <!--环信客服-->
         <meta-data

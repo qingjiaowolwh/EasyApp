@@ -7,6 +7,7 @@ import android.support.v7.widget.StaggeredGridLayoutManager;
 import com.edu.zum.easyapp.adapter.BaseRecyclerAdapter;
 import com.edu.zum.easyapp.adapter.FirstAdapter;
 import com.edu.zum.easyapp.api.RetrofitService;
+import com.edu.zum.easyapp.manager.DaoUtils;
 import com.edu.zum.easyapp.model.ResultModel;
 import com.edu.zum.easyapp.ui.ContainerActivity;
 import com.edu.zum.easyapp.ui.ListActivity;
@@ -20,17 +21,17 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
 public class FirstFragment extends XRecyclerViewFragment {
-//    private DaoUtils daoUtils;
+    private DaoUtils daoUtils;
 
     @Override
     protected void setUpData() {
         super.setUpData();
         //获取数据
-//        daoUtils = new DaoUtils(mContext);
-//        if (!daoUtils.searchGanhuo().isEmpty()) {
-//            mCurrentAction=ACTION_REFRESH;
-//            adapter.append(daoUtils.searchGanhuo());
-//        }
+        daoUtils = new DaoUtils(mContext);
+        if (!daoUtils.searchGanhuo().isEmpty()) {
+            mCurrentAction=ACTION_REFRESH;
+            adapter.append(daoUtils.searchGanhuo());
+        }
         mRecyclerView.setRefreshing(true);
         adapter.setOnItemChildClickListener((view,position,o)-> {
                 switch (position) {
@@ -57,24 +58,27 @@ public class FirstFragment extends XRecyclerViewFragment {
     @Override
     protected void loadData() {
         super.loadData();
-        subscription=RetrofitService.getInstance().getGoods("福利", mCurrentPageIndex).subscribeOn(Schedulers.io())
+        subscription=RetrofitService.getInstance()
+                .getGoods("福利", mCurrentPageIndex)
+                .subscribeOn(Schedulers.io())
                 .unsubscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread()).subscribe(new Subscriber<ResultModel>() {
-            @Override
-            public void onCompleted() {
-                loadComplete();
-            }
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Subscriber<ResultModel>() {
+                    @Override
+                    public void onCompleted() {
+                        loadComplete();
+                    }
 
-            @Override
-            public void onError(Throwable e) {
-                loadError(e);
-            }
+                    @Override
+                    public void onError(Throwable e) {
+                        loadError(e);
+                    }
 
-            @Override
-            public void onNext(ResultModel resultModel) {
-                loadNext(resultModel);
-            }
-        });
+                    @Override
+                    public void onNext(ResultModel resultModel) {
+                        loadNext(resultModel);
+                    }
+             });
 
     }
 
